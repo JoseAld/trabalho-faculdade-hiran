@@ -1,0 +1,180 @@
+{% load static %}
+{% block title %}Seleção de Entidade{% endblock %}
+
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+*{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+
+
+.modal {
+  display: block; /* Show the modal */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-image: url("{% static 'images/FundoSelecionarEntidade.png' %}");  /* Add background image */
+  filter: color-mix(brightness(50%), saturation(50%)); /* Ajustar valores para o efeito desejado */
+  overflow: auto; /* Enable scroll if content is too tall */
+<!--  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */-->
+
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #fff;
+  width: 20%; /* Adjust as needed */
+  border-radius: 5px
+}
+
+/* Modal Header */
+.modal-header {
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 20px;
+  color: #000
+}
+
+
+/* Modal Body */
+.modal-body {
+  padding: 20px;
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Button Styles */
+.btn1 {
+  padding: 10px 20px;
+  background-color: #7e57c2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 30px;
+  margin-left: 25px;
+}
+
+.btn:hover {
+  background-color: 6C38C8
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px
+  border: 1px solid var(--ct-border-color);
+  height: calc(1.5em + .9rem + 7px);
+  background-color: var(--ct-secondary-bg);
+  outline: 0;
+  cursor: pointer;
+  margin-left: 25px
+
+
+
+}
+
+select {
+  color: rgb(60, 69, 76)
+
+}
+
+select:hover{
+    background-color: #fff;
+}
+
+.form-control:focus {
+  border: 1px solid  /* Green border on focus */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Select Dropdown Styles */
+.form-control[type="select"] {
+  appearance: none; /* Remove default select arrow */
+  padding: 5px 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-control[type="select"]:focus {
+  border: 1px solid #5cb85c; /* Green border on focus */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%; /* Adjust width for smaller screens */
+  }
+
+* {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;  /* Adjust weight as desired (300, 500, 600) */
+}
+
+</style>
+
+<div class="modal fade bs-example-modal-center show" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myCenterModalLabel">Seleção de Entidades</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form-entidade" method="post" action="{% url 'home:selecionar_entidade' %}">{% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12 col-xl-12">
+                            <div class="form-group mb-3">
+                                <select class="form-control" name="entidade_selecionada" id="entidade" >
+                                    {% for ent in entidades_usuario %}
+                                            <option class="option1"value="{{ ent.pk }}">{{ ent.entidade.razao }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-xl-2">
+                            <button class="ladda-button btn1 btn-info"  type="submit"
+                                    data-style="expand-right" name="salvar" >
+                                Selecionar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

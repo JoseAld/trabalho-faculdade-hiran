@@ -1,0 +1,149 @@
+{% extends "relatorios/base/content.html" %}
+{% load static %}
+{% load l10n %}
+{% load coretags %}
+{% block content %}
+    {% for contrato in servidores %}
+        <div class="page" style="margin-bottom: 186px;">
+
+            <div style="height: 10px;margin-top: 10px;">
+                <div class="col-md-12">
+                    <div class="col-md-12 titulo-empresa" style="text-align: center"><b>{{ entidade }}</b></div>
+                    <div class="col-md-12 titulo-relatorio" style="text-align: center"><b>{{ titulo }}</b></div>
+                </div>
+            </div>
+            <div class="col-md-12" style="text-align: left">
+                <p style="margin-bottom:-10px;">
+                    Nome do ex-servidor: {{ contrato.nome }}.<br>
+
+                    Nº de Benefício/Matrícula: {{ contrato.matricula }}<br>
+
+                    Eu,____________________________________________________________.
+                </p>
+                <div class="col-md-6" style="text-align: left;position: relative; right: -120px;">
+                    (nome legível do (a) pensionista)
+                </div>
+            </div>
+            <div class="col-md-12">
+                <p>RG: {{ contrato.identidade }} CPF: {{ contrato.cpf }}</p>
+            </div>
+            <div class="col-md-12" style="margin-top: -20px;margin-bottom: 10px;">
+                <p><b>Declaro sob as penas da lei que as informações abaixo são verdadeiras (artigo 299 * do
+                    Código
+                    Penal)</b>:</p>
+            </div>
+
+            <div class="col-md-12" style="text-align: left;position: relative;top: -30px; font-size: 15px">
+                <div class="col-md-12">
+                    <p>
+                        1) Meu estado civil ATUAL é:<br>
+                        (  ) Viúvo (a) (  ) Casado (a) (  ) Solteiro (a)<br>
+                        (  ) Separado (a) Judicialmente / Divorciado (a)
+                    </p>
+                    <p>
+                        2) Convive ou já conviveu em união estável?<br>
+                        (  ) Sim (  ) Não<br>
+                        Se sim, qual o período? De: ______________ até: _____________.<br>
+                        Nome convivente: __________________________________________.
+                    </p>
+                    <p>
+                        3) Meu grau de parentesco com o ex-servidor é:<br>
+                        (  ) Cônjuge (  ) Ex-cônjuge Separado (a) Judicialmente ou Divorciado (a)<br>
+                        (  ) Filho (a) (  ) Companheiro (a)
+                    </p>
+                </div>
+                <div class="col-md-12" style="text-align: center;">
+                    <p style="margin-bottom:0px;">_________________________, ______ de _______________ de
+                        20_____.</p>
+                    <div class="col-md-6" style="text-align:right; position: relative; left: -100px;margin-bottom: -20px;">(local)</div>
+                    <div class="col-md-6" style="text-align:right; position: relative; left: -295px;margin-bottom: -20px;">(data)</div>
+                    <p style="margin-top: 60px;margin-bottom: 10px;">
+                        ________________________________________________________<br>
+                        Assinatura do(a) pensionista
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12" style="border: solid 1px black; font-size: 12px; text-align: justify;padding: 5px">
+                <p>
+                    Declaro que tive conhecimento do caráter obrigatório da necessidade de prestar as
+                    informações
+                    para a SPPREV, bem como da penalidade
+                    de suspensão, caso não atendida essa exigência, conforme previsto na Portaria que
+                    disciplina
+                    o
+                    recadastramento, estando ciente que as
+                    informações se prestam a complementar os cadastros e dados do beneficiário (a), podendo,
+                    inclusive, ser este termo usado como prova em
+                    processo administrativo.
+                </p>
+                <p>
+                    Tenho pleno conhecimento da legislação que estabeleceu o regime de pensão da São Paulo
+                    Previdência, em especial o fato de que o
+                    casamento e a união estável são motivos para a perda da pensão, de acordo com a Lei
+                    180/78,
+                    com
+                    alteração dada pela Lei Complementar
+                    1012/2007 para pensionistas de ex-servidores civis e Lei 452/1974 com alteração dada
+                    pela
+                    Lei
+                    Complementar 1013/2007 para pensionistas
+                    de ex-servidores militares e que tenho ciência do dever de informar imediatamente e por
+                    escrito
+                    qualquer modificação da condição pessoal à
+                    autarquia, ou seja, que tenho obrigação de comunicar toda e qualquer alteração
+                    superveniente
+                    sobre meu estado civil, incluindo o
+                    estabelecimento de união estável, sob pena de medidas legais e penais cabíveis.
+                </p>
+                <p>
+                    Ciente que poderei, desde que fundamentado em provas, promover posterior retificação
+                    deste
+                    termo.
+                </p>
+                <p>
+                    Declaro, ademais, serem verdadeiras todas as afirmações, ciente que a não veracidade
+                    poderá
+                    acarretar a instauração dos competentes
+                    processos judiciais, inclusive o crime de falsidade previsto no artigo 299 do Código
+                    Penal,
+                    que
+                    prevê pena de 1 a 5 anos quando alguém em
+                    documento público:
+                </p>
+                <p>
+                    “Omitir, em documento público ou particular, declaração que dele devia constar, ou nele
+                    inserir
+                    ou fazer inserir declaração falsa ou diversa
+                    da que devia ser escrita, com o fim de prejudicar direito, criar obrigação ou alterar a
+                    verdade
+                    sobre fato juridicamente relevante”.
+                </p>
+
+            </div>
+            <div class="col-md-12" style="text-align: justify;font-size: 12px;">
+                <p>
+                    <b>Instruções:</b> Aos aposentados não é necessário o preenchimento deste formulário!<br>
+                    - Remetendo o documento por correio, imprescindível reconhecer firma da assinatura. Fica
+                    dispensado
+                    da exigência anterior, caso firme o
+                    formulário na presença de servidor da autarquia, devendo a assinatura ser igual a do
+                    documento
+                    apresentado (favor enviar cópia do documento
+                    de identificação); caso a assinatura tenha mudado favor solicitar o reconhecimento de firma
+                    da
+                    nova
+                    assinatura ou apresentar documento com
+                    assinatura atual.
+                </p>
+            </div>
+
+            <div class="col-md-12" style="text-align: center;margin-bottom: 0">
+                <div class="col-md-12" style="border-top: solid 1px black">
+                    {{ entidade.logradouro }}<br>
+                    {{ contrato.entidade }}
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+{% endblock %}

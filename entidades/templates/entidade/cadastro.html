@@ -1,0 +1,110 @@
+{% extends 'base_cadastro.html' %}
+{% block title %} Formulario de entidade{% endblock %}
+{% block form_tipo %}Cadastro de Entidade{% endblock %}
+{% block form %}
+    <form class="needs-validation" id="form" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="row">
+            <div class="col-md-12 col-xl-4">
+                <label for="id_codigo_entidade" class="col-form-label  requiredField">
+                    Código entiadade<span class="asteriskField">*</span>
+                </label>
+                {{ form.codigo_entidade }}
+            </div>
+            <div class="col-md-12 col-xl-4">
+                <label for="id_cnpj" class="col-form-label  requiredField">
+                    CNPJ<span class="asteriskField">*</span>
+                </label>
+                {{ form.cnpj }}
+            </div>
+            <div class="col-md-12 col-xl-4">
+                <label for="id_razao" class="col-form-label  requiredField">
+                    Razão<span class="asteriskField">*</span>
+                </label>
+                {{ form.razao }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xl-4">
+                <label for="id_fone" class="col-form-label  requiredField">
+                    Telefone<span class="asteriskField">*</span>
+                </label>
+                {{ form.fone }}
+            </div>
+            <div class="col-md-12 col-xl-4">
+                <label for="id_fax" class="col-form-label  requiredField">
+                    Fax<span class="asteriskField">*</span>
+                </label>
+                {{ form.fax }}
+            </div>
+            <div class="col-md-12 col-xl-4">
+                <label for="id_email" class="col-form-label  requiredField">
+                    E-mail<span class="asteriskField">*</span>
+                </label>
+                {{ form.email }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xl-2">
+                <label for="id_cep" class="col-form-label  requiredField">
+                    CEP<span class="asteriskField">*</span>
+                </label>
+                {{ form.cep }}
+            </div>
+            <div class="col-md-12 col-xl-2">
+                <label for="id_logradouro" class="col-form-label  requiredField">
+                    Logradouro<span class="asteriskField">*</span>
+                </label>
+                {{ form.logradouro }}
+            </div>
+            <div class="col-md-12 col-xl-1">
+                <label for="id_log_numero" class="col-form-label  requiredField">
+                    Número<span class="asteriskField">*</span>
+                </label>
+                {{ form.log_numero }}
+            </div>
+            <div class="col-md-12 col-xl-1">
+                <label for="id_complemento" class="col-form-label  requiredField">
+                    Complemento<span class="asteriskField">*</span>
+                </label>
+                {{ form.complemento }}
+            </div>
+            <div class="col-md-12 col-xl-2">
+                <label for="id_bairro" class="col-form-label  requiredField">
+                    Bairro<span class="asteriskField">*</span>
+                </label>
+                {{ form.bairro }}
+            </div>
+            <div class="col-md-12 col-xl-2">
+                <label for="id_cidade" class="col-form-label  requiredField">
+                    Cidade<span class="asteriskField">*</span>
+                </label>
+                {{ form.cidade }}
+            </div>
+            <div class="col-md-12 col-xl-2">
+                <label for="id_estado" class="col-form-label  requiredField">
+                    Estado<span class="asteriskField">*</span>
+                </label>
+                {{ form.estado }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xl-12" style="margin-top: 12px;">
+                <label for="id_brasao" class="col-form-label  requiredField">
+                    Brasão<span class="asteriskField">*</span>
+                </label>
+                {{ form.brasao }}
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-2 col-xl-2">
+                <div class="form-group mb- text-center">
+                    <button class="ladda-button btn btn-primary btn-block" type="submit" style="width: 150px"
+                        data-style="expand-right" name="salvar">Salvar
+                </button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+

@@ -1,0 +1,48 @@
+{% extends "relatorios/base/content.html" %}
+{% load static %}
+{% load l10n %}
+{% load coretags %}
+{% block content %}
+    {% for contrato in servidores %}
+        <div class="page" style="margin-bottom: 186px;">
+                <div style="position: relative; top: 400px">
+                    <div style="height: 100px;" id="cabecalho">
+                        <div style="float: left; width: 100%;">
+                            <div class="col-md-12 titulo-empresa" style="text-align: center;font-size: 20px"><b>{{ entidade }}</b></div>
+                            <div class="col-md-12 titulo-relatorio" style="text-align: center; font-size: 20px"><b>{{ titulo }}</b></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="texto" style="text-align: justify;font-size: 18px;">
+                        <p>
+                            Eu, {{ contrato.nome }}, portador(a) da carteira de identidade nº {{ contrato.identidade }},
+                            CPF
+                            nº
+                            {{ contrato.cpf }}, declaro para os devidos fins que, na presente data, não possuo bens
+                            móveis e
+                            imóveis.
+                        </p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 200px" >
+                        <div style="margin-bottom: 100px">
+                            {{ entidade.cidade }}-{{ entidade.estado }}, {{ datadehoje }}
+                        </div>
+                        <div>
+                            _____________________________________________________________________
+                            <p style="margin: 0px">
+                                ASSINATURA
+                            </p>
+                        </div>
+                    </div>
+                    <footer class="col-md-12" style="position: relative;top: 320px; padding: 0px;">
+                        <div style="text-align: center; border-top: solid 1px black">
+                            {{ entidade.logradouro }}<br>
+                            {{ contrato.entidade }}
+                        </div>
+                    </footer>
+                </div>
+
+        </div>
+
+    {% endfor %}
+{% endblock %}

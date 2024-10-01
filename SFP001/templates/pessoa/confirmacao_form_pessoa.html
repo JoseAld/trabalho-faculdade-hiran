@@ -1,0 +1,74 @@
+{% load static %}
+
+<form class="parsley-examples" id="form_usuario" method="POST" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-3">
+            <div style="display: none">
+                {{ form.foto_uri }}
+            </div>
+
+            <fieldset id="container-foto" class="fieldset-border-foto">
+                <legend class="legend-border-form">Foto</legend>
+                <div class="col-md-12">
+                    <div id="div-foto" class="col-md-12 d-flex justify-content-center">
+                        <img id="id_foto_webcam" class="img-fluid"
+                             src="data:image/jpeg;base64,{{ base64_string|safe }}"/>
+
+                        <i id="icon_foto" class="mdi mdi mdi-image-off" style="font-size: 10vw; display:{% if base64_string  %} none {% endif %}"></i>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <table class="table table-hover mb-0">
+            <thead>
+                <th>Original</th>
+                <th>Modificado</th>
+            </thead>
+            <tbody>
+            {% for obj  in registro %}
+                <tr>
+                    <td>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="id_matricula" class="col-form-label">
+                                    {{ obj.descricao }} :
+                                </label>
+                                <p><del>{{ obj.valor_anterior|default_if_none:" " }}</del></p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="id_matricula" class="col-form-label">
+                                    {{ obj.descricao }} :
+                                </label>
+                                <p>{{ obj.valor|default_if_none:"-" }}</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-lg-3 col-xl-3">
+            <div class="form-group mb-0 text-center">
+                <button type="submit" class="ladda-button btn btn-primary btn-block" id="btnpessoa"
+                        data-style="expand-right" name="salvar">Salvar
+                </button>
+            </div>
+        </div>
+        <div class="col-lg-3 col-xl-3">
+            <a class="btn btn-danger btn-block" href="{% url 'SFP001:listagem_pessoa' %}?tipo=funcionario">Cancelar</a>
+        </div>
+    </div>
+
+
+</form>
+
+

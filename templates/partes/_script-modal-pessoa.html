@@ -1,0 +1,159 @@
+{% load static %}
+<script src="{% static 'js/vendor.min.js' %}"></script>
+<script src="{% static 'libs/flatpickr/flatpickr.min.js' %}"></script>
+<script src="{% static 'libs/jquery-knob/jquery.knob.min.js' %}"></script>
+<script src="{% static 'libs/jquery-sparkline/jquery.sparkline.min.js' %}"></script>
+<script src="{% static 'libs/flot-charts/jquery.flot.js' %}"></script>
+<script src="{% static 'libs/flot-charts/jquery.flot.time.js' %}"></script>
+<script src="{% static 'libs/flot-charts/jquery.flot.tooltip.min.js' %}"></script>
+<script src="{% static 'libs/flot-charts/jquery.flot.selection.js' %}"></script>
+<script src="{% static 'libs/flot-charts/jquery.flot.crosshair.js' %}"></script>
+<script src="{% static 'js/pages/dashboard-1.init.js' %}"></script>
+<script src="{% static 'js/app.min.js' %}"></script>
+<script src="{% static 'js/jquery.mask.js' %}"></script>
+
+<!--Removendo a mascaras dos campos-->
+<script>
+    $('.needs-validation').submit(function () {
+        $('#id_cpf').unmask()
+        $('#id_fone').unmask()
+        $('#id_cnpj').unmask()
+        $('#id_fax').unmask()
+        $('#id_cep').unmask()
+        $('#id_numero_inscricao').unmask()
+    })
+    $("#div_id_entidade").css("display", "none");
+    $("#id_entidade").prop("disabled", true);
+</script>
+
+<script src="{% static 'libs/jquery-toast/jquery.toast.min.js' %}"></script>
+<script src="{% static 'js/pages/toastr.init.js' %}"></script>
+
+<!-- third party js -->
+
+<script src="{% static 'libs/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'libs/datatables/dataTables.bootstrap4.js' %}"></script>
+<script src="{% static 'libs/datatables/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'libs/datatables/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'libs/datatables/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'libs/datatables/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'libs/datatables/buttons.html5.min.js' %}"></script>
+<script src="{% static 'libs/datatables/buttons.flash.min.js' %}"></script>
+<script src="{% static 'libs/datatables/buttons.print.min.js' %}"></script>
+<script src="{% static 'libs/datatables/dataTables.keyTable.min.js' %}"></script>
+<script src="{% static 'libs/datatables/dataTables.select.min.js' %}"></script>
+<script src="{% static 'libs/pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'libs/pdfmake/vfs_fonts.js' %}"></script>
+<!-- third party js ends -->
+
+<!-- Datatables init -->
+<script type="text/javascript" src="{% static 'js/traducao_datatables.js' %}"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        function limpa_formulário_cep() {
+            // Limpa valores do formulário de cep.
+            $("#id_logradouro").val("");
+            $("#id_bairro").val("");
+        }
+
+        //Quando o campo cep perde o foco.
+        $("#id_cep").blur(function () {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = $(this).val().replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if (validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    $("#id_logradouro").val("...");
+                    $("#id_bairro").val("...");
+
+                    //Consulta o webservice viacep.com.br/
+                    $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+
+                        if (!("erro" in dados)) {
+                            //Atualiza os campos com os valores da consulta.
+                            $("#id_logradouro").val(dados.logradouro);
+                            $("#id_bairro").val(dados.bairro);
+                            $("#id_cidade").val(dados.localidade);
+                            $("#id_estado").val(dados.uf);
+                        } //end if.
+                        else {
+                            //CEP pesquisado não foi encontrado.
+                            limpa_formulário_cep();
+                            message('warning', 'CEP não encontrado')
+                        }
+                    });
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    message('warning', 'CEP não inválido')
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        });
+    });
+
+</script>
+<!-- Plugins js -->
+<script src="{% static 'libs/dropzone/dropzone.min.js' %}"></script>
+<script src="{% static 'libs/dropify/dropify.min.js' %}"></script>
+
+<!-- Loading buttons js -->
+<script src="{% static 'libs/ladda/spin.js' %}"></script>
+<script src="{% static 'libs/ladda/ladda.js' %}"></script>
+
+<!-- Plugins js-->
+<script src="{% static 'libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js' %}"></script>
+
+<!-- Init js-->
+<script src="{% static 'js/pages/form-wizard.init.js' %}"></script>
+
+<!-- Buttons init js-->
+<script src="{% static 'js/pages/loading-btn.init.js' %}"></script>
+
+<!-- Init js-->
+<script src="{% static 'js/pages/form-fileuploads.init.js' %}"></script>
+<!-- Plugins js datepicker-->
+<script src="{% static 'libs/flatpickr/flatpickr.min.js' %}"></script>
+<script src="{% static 'libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js' %}"></script>
+<script src="{% static 'libs/clockpicker/bootstrap-clockpicker.min.js' %}"></script>
+<script src="{% static 'libs/bootstrap-datepicker/bootstrap-datepicker.min.js' %}"></script>
+<!-- Sweet Alerts js -->
+<script src="{% static 'libs/sweetalert2/sweetalert2.min.js' %}"></script>
+
+<!-- Sweet alert init js-->
+<script src="{% static 'js/pages/sweet-alerts.init.js' %}"></script>
+<!-- Init js-->
+<script src="{% static 'js/pages/form-pickers.init.js' %}"></script>
+<script src="{% static 'libs/bootstrap-datepicker/bootstrap-datepicker.pt-BR.min.js' %}"></script>
+<script type="text/javascript">$("#id_fone").mask("(00) 0000-00009");</script>
+<!-- Chart JS -->
+<script src="{% static 'libs/chart-js/Chart.bundle.min.js' %}"></script>
+
+<script src="{% static 'libs/moment/moment.min.js' %}"></script>
+<script src="{% static 'libs/jquery-scrollto/jquery.scrollTo.min.js' %}"></script>
+
+<!-- Chat app -->
+<script src="{% static 'js/pages/jquery.chat.js' %}"></script>
+
+<!-- Todo app -->
+<script src="{% static 'js/pages/jquery.todo.js' %}"></script>
+
+<!-- Dashboard init JS -->
+<script src="{% static 'js/pages/dashboard-3.init.js' %}"></script>
+
+

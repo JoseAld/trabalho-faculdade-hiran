@@ -1,0 +1,112 @@
+{% extends 'base_listagem.html' %}
+{% load static %}
+{% block title %}Listagem Controle{% endblock %}
+{% block rota %}{% endblock %}
+
+{% block conteudo %}
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    {% block breadcrumb %}
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home:Home' %}">Layout recad</a></li>
+                        <li class="breadcrumb-item active">Lista de controle</li>
+                    </ol>
+                    {% endblock %}
+                </div>
+                <h4 class="page-title">{% block titulo_pagina_listagem %}Controle{% endblock %}</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="row">
+            <div class="col-6">
+                <div class="float-right search btn-group mb-2">
+                    <form id="frm_pesq" onsubmit="spn()">{% csrf_token %}
+                        {{ form.search }}
+                    </form>
+                    <div id="spn-carregando" class="spinner-border m-2" role="status" style="display: none">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive" style="overflow:scroll;overflow-x: hidden; height:665px;">
+                        <table class="table table-bordered table-hover table-sm mb-0">
+                            <thead>
+                            {% block colunas %}
+                            <th class="text-center"><b>Descrição</b></th>
+                            <th><b>Obrigatório</b></th>
+                            <th><b>Não Importar</b></th>
+                            {% endblock %}
+                            </thead>
+                            <tbody>
+                            {% block dados %}
+                            <form>{% csrf_token %}
+                                {% for controle in object_list %}
+                                <tr>
+                                    <th>{{ controle.descricao }}</th>
+                                    <td>
+                                        <div class="form-check mb-2 form-check-primary"
+                                             style="text-align: center">
+                                            <input type="checkbox" class="form-check-input"
+                                                   id="obg_{{ controle.id }}"
+                                                   {% if controle.obrigatorio %}checked{% endif %}
+                                                   onchange="modificar({{ controle.id|safe }},'obrigatorio')">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-check mb-2 form-check-primary"
+                                             style="text-align: center">
+                                            <input type="checkbox" class="form-check-input"
+                                                   id="imp_{{ controle.id }}"
+                                                   {% if controle.nao_importar %}checked{% endif %}
+                                                   onchange="modificar({{ controle.id|safe }},'nao_importar')">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </form>
+                            {% endfor %}
+
+                            {% endblock %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block script %}
+<script>
+    function modificar(id, campo) {
+        $.ajax({
+            type: "POST",
+            url: '/controle/atualiza/',
+            data: {csrfmiddlewaretoken: '{{ csrf_token }}', id: id, campo: campo},
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+</script>
+
+<script>
+function spn() {
+   document.getElementById("spn-carregando").style.display = "block";
+};
+</script>
+{% endblock %}

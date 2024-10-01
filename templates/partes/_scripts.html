@@ -1,0 +1,46 @@
+{% load static %}
+
+<script src="{% static 'js/vendor.min.js' %}"></script>
+<script src="{% static 'js/app.min.js' %}"></script>
+
+<script src="{% static 'libs/flatpickr/flatpickr.min.js' %}"></script>
+<script src="{% static 'libs/jquery-knob/jquery.knob.min.js' %}"></script>
+<script src="{% static 'libs/jquery-sparkline/jquery.sparkline.min.js' %}"></script>
+
+<!-- Plugins js -->
+<script src="{% static 'libs/jquery-mask-plugin/jquery.mask.min.js' %}"></script>
+<script src="{% static 'libs/autonumeric/autoNumeric.min.js' %}"></script>
+
+<!-- Init js-->
+<script src="{% static 'js/pages/form-masks.init.js' %}"></script>
+
+<!--Removendo a mascaras dos campos-->
+<script>
+    $("#div_id_entidade").css("display", "none");
+    $("#id_entidade").prop("disabled", true);
+</script>
+
+<script src="{% static 'libs/jquery-toast/jquery.toast.min.js' %}"></script>
+<script src="{% static 'js/pages/toastr.init.js' %}"></script>
+
+<script src="{% static 'libs/select2/js/select2.min.js' %}"></script>
+<!-- Sweet Alerts js -->
+<script src="{% static 'libs/sweetalert2/sweetalert2.min.js' %}"></script>
+
+<!-- Sweet alert init js-->
+<!--<script src="{% static 'js/pages/sweet-alerts.init.js' %}"></script>-->
+
+<!-- Plugins js -->
+<script src="{% static 'libs/dropzone/min/dropzone.min.js' %}"></script>
+<script src="{% static 'libs/dropify/js/dropify.min.js' %}"></script>
+
+<!-- Init js-->
+<script src="{% static 'js/pages/form-fileuploads.init.js' %}"></script>
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="select2"]').select2({width: '100%'});
+    });
+</script>
+
+<!-- toastr init js-->
+<script src="{% static 'js/pages/toastr.init.js' %}"></script>

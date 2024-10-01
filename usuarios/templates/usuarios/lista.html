@@ -1,0 +1,125 @@
+{% extends 'base_listagem.html' %}
+{% block title %}Listagem Usuários{% endblock %}
+{% block rota_cadastro %}{% url 'usuarios:cadastro_usuario' %}{% endblock %}
+{% block titulo_pagina_listagem %}Usuários{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a href="{% url 'home:Home' %}">Layout recad</a></li>
+        <li class="breadcrumb-item active">Lista de usuários</li>
+    </ol>
+{% endblock %}
+{% block nome %}Novo{% endblock %}
+{% block colunas %}
+    <th class="text-center"><b>Nome de usuário</b></th>
+    <th class="text-center"><b>E-mail</b></th>
+    <th class="text-center"><b>Super usuário</b></th>
+    <th class="text-center"><b>Ativo</b></th>
+    <th></th>
+{% endblock %}
+{% block dados %}
+    {% for usuario in object_list %}
+        <tr class="text-center" style="vertical-align: middle;">
+            <th><b>{{ usuario.username|upper }}</b></th>
+            <td class="text-left" style="vertical-align: middle;">{{ usuario.email|upper }}</td>
+            {% if usuario.is_superuser %}
+                <td style="vertical-align: middle;"><span class="badge label-table bg-success" style="font-size: 12px">SIM</span></td>
+            {% else %}
+                <td style="vertical-align: middle;"><span class="badge label-table bg-danger" style="font-size: 12px">NÃO</span></td>
+            {% endif %}
+            {% if usuario.is_active %}
+                <td style="vertical-align: middle;"><span class="badge label-table bg-success" style="font-size: 12px">SIM</span></td>
+            {% else %}
+                <td><span class="badge label-table bg-danger" style="font-size: 12px">NÃO</span></td>
+            {% endif %}
+            <td>
+                <a href="{% url 'usuarios:atualizar_usuario' usuario.id|safe %}" class="btn btn-soft-info rounded-pill waves-effect waves-light">
+                    <i class="mdi mdi-circle-edit-outline" title="Editar usuário"></i>
+                </a>
+                {% if usuario.is_active %}
+                    <button type="button" class="btn btn-soft-danger rounded-pill waves-effect waves-light"
+                            onclick="Desativar('{{ usuario.id|safe }}', '{{ usuario.get_full_name|upper }}')" title="Desativar usuário">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                {% else %}
+                    <button type="button" class="btn btn-soft-succes rounded-pill waves-effect waves-light"
+                            onclick="Ativar('{{ usuario.id|safe }}', '{{ usuario.get_full_name|upper }}')" title="Ativar usuário">
+                        <i class="mdi mdi-check"></i>
+                    </button>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+{% block script %}
+
+    <script>
+        $(function (){
+            $("#tableListagem").tablesorter({
+                theme: 'ice',
+            });
+        })
+    </script>
+
+    <script>
+        function Desativar(id, mensagem) {
+            Swal.fire({
+                title: 'Confirma desativação?',
+                text: 'Desativar usuário : ' + mensagem,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, desative ele!',
+                cancelButtonText: 'Não, cancele!',
+                confirmButtonClass: 'btn btn-success mt-2',
+                cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                buttonsStyling: false
+            }).then(function (result) {
+                if (result.value) {
+                    {#$.ajax({#}
+                    {#    type: "POST",#}
+                    {#    url: '/usuarios/situacao/' + id,#}
+                    {#    data: {csrfmiddlewaretoken: '{{ csrf_token }}'},#}
+                    {#    success: function (data) {#}
+                    {#        location.reload();#}
+                    {#    }#}
+                    {# }); #}
+                    location.href = '/usuarios/desativar_usuario/' + id
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === Swal.DismissReason.cancel
+                ) ;
+            })
+            ;
+        }
+    </script>
+    <script>
+        function Ativar(id, mensagem) {
+            Swal.fire({
+                title: 'Confirma ativação?',
+                text: 'Ativar usuário : ' + mensagem,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, ative ele!',
+                cancelButtonText: 'Não, cancele!',
+                confirmButtonClass: 'btn btn-success mt-2',
+                cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                buttonsStyling: false
+            }).then(function (result) {
+                if (result.value) {
+                    {#$.ajax({#}
+                    {#    type: "POST",#}
+                    {#    url: '/usuarios/situacao/' + id,#}
+                    {#    data: {csrfmiddlewaretoken: '{{ csrf_token }}'},#}
+                    {#    success: function (data) {#}
+                    {#        location.reload();#}
+                    {#    }#}
+{#                    });#}
+                    location.href = '/usuarios/desativar_usuario/' + id
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === Swal.DismissReason.cancel
+                ) ;
+            })
+            ;
+        }
+    </script>
+{% endblock %}

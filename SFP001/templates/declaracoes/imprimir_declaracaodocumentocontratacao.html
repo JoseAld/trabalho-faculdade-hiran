@@ -1,0 +1,165 @@
+{% extends "relatorios/base/content.html" %}
+{% load static %}
+{% load l10n %}
+{% load coretags %}
+{% block content %}
+    {% for contrato in servidores %}
+        <div class="page" style="position: relative; top: 50px;margin-bottom: 180px;">
+
+            <div class="col-md-12" style="height: 100px;">
+                <div class="col-md-12">
+                    <div class="col-md-12 titulo-empresa" style="text-align: center"><b>{{ entidade }}</b></div>
+                    <div class="col-md-12 titulo-relatorio" style="text-align: center"><b>{{ titulo }}</b></div>
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-top: -40px">
+                <p><b>NOME DO CONVOCADO(A): </b>{{ contrato.nome|valida_null }}.</p>
+                <p><b>CARGO: </b>{{ contrato.funcao }}.</p>
+                <p><b>CPF: </b>{{ contrato.cpf|valida_null }}, <b>FONE: </b>{{ contrato.fone|valida_null }},
+                    <b>EMAIL: </b>{{ contrato.email|valida_null }}.</p>
+            </div>
+            <div class="col-md-12" id="texto" align="center">
+                <table class="table" style="border: black solid 1px">
+                    <thead>
+                    <tr>
+                        <th style="border-right: black solid 1px">DOCUMENTAÇÃO APRESENTADA, CÓPIAS AUTENTICADAS EM
+                            CARTÓRIO
+                        </th>
+                        <th style="border-right: black solid 1px">SIM</th>
+                        <th>NÃO</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Carteira de identidade
+                            civil ou documento válido no país como documento de identificação
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">CPF</td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">2 (duas) fotos 3x4
+                            idênticas
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Certidão de casamento e
+                            de
+                            nascimento dos filhos menores de 18 anos, se for o caso
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Título de eleitor e
+                            comprovante de quitação eleitoral
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Comprovante de quitação
+                            militar, para os candidatos do sexo masculino, até 45 anos de idade
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Comprovante de
+                            escolaridade
+                            (Certificado e Histórico)
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Declaração do imposto
+                            de
+                            renda ou declaração de isento
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Comprovante de endereço
+                            atualizado do último mês (água, luz ou telefone)
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Declaração de não ter
+                            antecedentes criminais, e de estar em pleno gozo dos direitos civis e políticos.
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Certidão de óbito do
+                            cônjuge.
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Documento com número do
+                            PIS/PASEP
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Carteira de entidade
+                            profissional
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Carteira nacional de
+                            habilitação
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px">Averbação de divórcio
+                        </td>
+                        <td style="border-top:black solid 1px;border-right: black solid 1px"></td>
+                        <td style="border-top:black solid 1px"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-12" style="text-align: center; margin-top: 80px" id="assinatura">
+                ________________________________________________
+                <p><b>Assinatura do Candidato(a)e/ou Procurador(a)</b></p>
+                <hr style="border: black dotted 2px">
+                <p><b>Declaro que recebi do convocado(a) acima identificado(a)adocumentação indicada no quadro
+                    acima.</b></p>
+                <div id="sub-assinaturas" style="text-align: left">
+                    <p>Nome do recebedor:______________________________________________________________________.</p>
+                    <p>Assinatura do responsável pelo
+                        recebimento:___________________________________________________.</p>
+                    <p>Assinatura do Presidente da
+                        Comissão:_______________________________________________________.</p>
+                </div>
+                <p style="margin-top: 50px; font-size: 20px">{{ entidade.cidade }} - {{ entidade.estado }},_____/_____/_________.</p>
+            </div>
+            <div class="col-md-12" style="position: relative; top: 80px;text-align: center;">
+                <div style="border-top: solid 1px black">
+                    {{ entidade.logradouro }}<br>
+                    {{ contrato.entidade }}
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base_listagem.html' %}
+{% block title %}Listagem Servidores{% endblock %}
+{% block rota_cadastro %}{% url 'SFP001:cadastro_pessoa' %}{% endblock %}
+{% block titulo_pagina_listagem %}Pessoas{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a href="{% url 'home:Home' %}">Layout recad</a></li>
+        <li class="breadcrumb-item active">Lista de pessoas</li>
+    </ol>
+{% endblock %}
+{% block nome %}Novo{% endblock %}
+
+{% block filtros %}
+    <div class="row">
+        <div class="float-right search btn-group mt-2">
+            <form id="frm_pesq" onsubmit="spn()">{% csrf_token %}
+                {{ form.search }}
+            </form>
+            <div id="spn-carregando" class="spinner-border m-2" role="status" style="display: none">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block colunas %}
+    <th class="text-center"><b>Status</b></th>
+    <th class="text-center"><b>Matricula</b></th>
+    <th class="text-center"><b>Nome do Servidor</b></th>
+    <th class="text-center"><b>Dt. Nasc.</b></th>
+    <th class="text-center"><b>Nome da Mãe</b></th>
+    <th class="text-center"><b>CPF</b></th>
+    <th class="text-center"><b>Dt. Adm.</b></th>
+    <th></th>
+{% endblock %}
+
+{% block dados %}
+    {% for d in object_list %}
+        <tr>
+            <td class="text-center" style="vertical-align: middle;">
+                {% if d.status == 'I' %}
+                    <i class="fas fa-user-clock fa-lg text-danger" title="Pendente"></i>
+                {% elif d.status == 'E' %}
+                    <i class="fas fa-user-edit fa-lg text-warning" title="Editado"></i>
+                {% elif d.status == 'U' %}
+                    <i class="fas fa-people-arrows fa-lg text-warning" title="Funcionário-Pendente aprovação"></i>
+                {% else %}
+                    <i class="fas fa-user-check fa-lg text-success" title="Finalizado"></i>
+                {% endif %}
+            </td>
+            <td class="text-center" style="vertical-align: middle;">{{ d.Matricula|upper }}</td>
+            <td style="vertical-align: middle;">{{ d.Nome|upper }}</td>
+            <td class="text-center" style="vertical-align: middle;">{{ d.dtnasc|date:"d/m/y" }}</td>
+            <td style="vertical-align: middle;">{{ d.nomeMae|upper }}</td>
+            <td class="text-center" style="vertical-align: middle;">{{ d.CPF|upper }}</td>
+            <td class="text-center" style="vertical-align: middle;">{{ d.dtadmissao|date:"d/m/y" }}</td>
+            <td class="text-center" style="vertical-align: middle;">
+
+                <a href="{% url 'SFP001:atualizar_pessoa' d.id|safe %}" class="btn btn-soft-info rounded-pill waves-effect waves-light">
+                    <i class="mdi mdi-square-edit-outline" title="Editar formulário"></i></a>
+
+                <button type="button" class="btn btn-soft-danger rounded-pill waves-effect waves-light"
+                        onclick="Deletar('{{ d.id|safe }}', '{{ d.nome|upper }}')" title="Apagar formulário">
+                    <i class="mdi mdi-delete"></i>
+                </button>
+
+               {% if d.status == 'U' %}
+                <a href="{% url 'SFP001:confirmar_pessoa' d.id|safe %}" class="btn btn-soft-blue rounded-pill waves-effect waves-light">
+                    <i class="mdi mdi-account-check" title="Verificação de dados"></i></a>
+               {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block script %}
+    <script>
+        function Deletar(id, mensagem) {
+            Swal.fire({
+                title: 'Confirma exclusão?',
+                text: 'Deletar pessoa : ' + mensagem,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, exclua o formulário!',
+                cancelButtonText: 'Não, cancele!',
+                confirmButtonClass: 'btn btn-success mt-2',
+                cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                buttonsStyling: false
+            }).then(function (result) {
+                if (result.value) {
+                    {#$.ajax({#}
+                    {#    type: "POST",#}
+                    {#    url: '/usuarios/situacao/' + id,#}
+                    {#    data: {csrfmiddlewaretoken: '{{ csrf_token }}'},#}
+                    {#    success: function (data) {#}
+                    {#        location.reload();#}
+                    {#    }#}
+                    {# }); #}
+                    location.href = '/SFP001/deletepessoa/' + id
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === Swal.DismissReason.cancel
+                ) ;
+            })
+            ;
+        }
+    </script>
+<script>
+function spn() {
+   document.getElementById("spn-carregando").style.display = "block";
+};
+</script>
+{% endblock %}

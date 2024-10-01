@@ -1,0 +1,1019 @@
+{% extends "relatorios/base/content.html" %}
+{% load static %}
+{% load coretags %}
+{% block content %}
+    {% for contrato in servidores %}
+        <div class="page">
+            <div class="col-md-12" style="margin-top: 20px">
+                <div class="col-md-2">
+                    <div>
+                        <img id="brasao" align="left" style="width: 50px; height: 55px;position: relative;"
+                             src="{{ url }}{{ entidade.brasao.url }}"/>
+                    </div>
+                </div>
+                <div class="col-md-8" style="position: relative; left: -80px;">
+                    <div style="float: left;font-size: 16px;">
+                        <div class="col-md-10 titulo-empresa"><b>{{ entidade }}</b></div>
+                        <div class="col-md-12 titulo-relatorio">{{ titulo }}</div>
+                    </div>
+                </div>
+                <div class="col-md-2" style="position: relative;">
+                    <b>ANO.: {{ ano }}</b>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>DADOS GERAIS</b></div>
+                <fieldset class="fieldset-border">
+                    <div class="col-12" style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>MATRICULA:</b></label> {{ contrato.matricula|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NOME:</b></label> {{ contrato.nome|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>VINCULO:</b></label> {{ contrato.sistema|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>CARGA HORÁRIA:</b></label> {{ contrato.hortrab|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>CARGO:</b></label> {{ contrato.funcao|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>CARGO 2:</b></label> {{ contrato.funcao2|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>SECRETARIA:</b></label> {{ contrato.cdsecreta|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>SETOR:</b></label> {{ contrato.cdsetor|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>UNIDADE GESTORA:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>UNIDADE GESTORA 2:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>SECRETARIA ORIGEM:</b></label> {{ contrato.cdsecretaorigem|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>SETOR ORIGEM:</b></label> {{ contrato.cdsetororigem|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>DADOS PESSOAIS</b></div>
+                <fieldset class="fieldset-border">
+                    <div class="col-12" style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>CPF:</b></label> {{ contrato.cpf|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>RESERVISTA:</b></label> {{ contrato.certmilit|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>CONSELHO(SIGLA):</b></label> {{ contrato.regcons|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚM. DO
+                                        CONSELHO:</b></label> {{ contrato.get_numcons_display|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NOME DO PAI:</b></label> {{ contrato.nomepai|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NOME DA MÃE:</b></label> {{ contrato.nomemae|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NATURALIDADE:</b></label>{{ contrato.naturaliza|valida_null }}
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NACIONALIDADE:</b></label>{{ contrato.nacionalid|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>TIPO
+                                        SANGUÍNEO:</b></label> {{ contrato.get_tpsanguineo_display|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>RAÇA/COR:</b></label>{{ contrato.get_raca_display|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>ESTADO CIVIL:</b></label> {{ contrato.get_estcivil_display|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>SEXO:</b></label> {{ contrato.get_sexo_display|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DE
+                                        NASCIMENTO:</b></label> {{ contrato.dtnasc|date:"d/m/y"|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DE
+                                        ADMISSÃO:</b></label> {{ contrato.dtadmissao|date:"d/m/y"|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DE ADMISSÃO
+                                        2:</b></label> {{ contrato.dtadmissao2|date:"d/m/y"|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    <label><b>OBSERVAÇÕES:</b></label>
+                                    {% if contrato.obs %}
+                                        {{ contrato.obs }}
+                                    {% else %}
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>DOCUMENTAÇÃO</b></div>
+                <fieldset class="fieldset-border">
+                    <div class="col-12" style="padding: 5px 0px 0px 10px">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DO RG:</b></label> {{ contrato.identidade|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>ORGÃO DE EXPEDIDOR:</b></label> {{ contrato.orgaoident|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>UF:</b></label> {{ contrato.ufident|upper|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA:</b></label> {{ contrato.dtident|date:"d/m/y"|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NUMERO DO TÍTULO DE
+                                        ELITOR:</b></label> {{ contrato.titeleitor|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>ZONA....:</b></label> {{ contrato.zona|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>SEÇÃO....:</b></label> {{ contrato.secao|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>NUMERO DA CNH:</b></label> {{ contrato.cnh|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>CATEGORIA:</b></label> {{ contrato.cnhcat|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DE
+                                        EXPEDIÇÃO:</b></label> {{ contrato.cnhdtexp|date:"d/m/y"|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DE
+                                        VALIDADE:</b></label> {{ contrato.dtcnh|date:"d/m/y"|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>UF:</b></label> {{ contrato.ufcnh|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DA PRIMEIRA
+                                        HABILITAÇÃO:</b></label> {{ contrato.dtprimcnh|date:"d/m/y"|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DA CTPS:</b></label> {{ contrato.numcartprof|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>SÉRIE:</b></label> {{ contrato.seriecartprof|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>UF:</b></label> {{ contrato.ufcartprof|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DO NIS:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>OUTRAS DOCUMENTAÇÕES</b>
+                </div>
+                <fieldset class="fieldset-border">
+                    <div class="col-12" style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DE CERTIDÃO DE
+                                        CASAMENTO:</b></label> {{ contrato.ncertcasamento|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DE CERTIDÃO DE
+                                        NASCIMENTO:</b></label> {{ contrato.ncertnascimento|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DA AVERBAÇÃO DE
+                                        DIVÓRCIO:</b></label> {{ contrato.naverbdivorcio|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2" style="text-transform: uppercase;">
+                                    <label><b>Já contribui para algum regimento de previdência antes do ingresso na
+                                        Prefeitura, se sim a partir de quando?:</b></label>
+                                    {% if contrato.jacotribregime %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DO REGIMENTO DE
+                                        PREVIDÊNCIA:</b></label> {{ contrato.dataregimeprev|date:"d/m/y"|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DO CARTÃO SUS:</b></label> {{ contrato.sus_numcart|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DE EMISSÃO DO CARTÃO
+                                        SUS:</b></label> {{ contrato.sus_dtemissao|date:"d/m/y"|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <fieldset class="fieldset-border">
+                    <div style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DO RIC:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>ORGÃO EMISSOR:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DE EXPEDIÇÃO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DO OC:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>ORGÃO E UF DE EMISSÃO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DA EXPEDIÇÃO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DE VALIDADE:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label><b>PROVIMENTO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DO EXERCÍCIO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DA NOMEAÇÃO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><b>DATA DA POSSE:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><b>TIPO DE PROVIMENTO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label><b>TIPO DE PLANO DE SEGREGAÇÃO EM MASSA:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>ENDEREÇO</b></div>
+                <fieldset class="fieldset-border">
+                    <div style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group mb-2">
+                                    <label><b>CEP:</b></label> {{ contrato.cep|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>LOGRADOURO:</b></label> {{ contrato.tplogradouro|valida_null|upper }} {{ contrato.endereco|valida_null|upper }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO:</b></label> {{ contrato.endnum|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>UF:</b></label> {{ contrato.uf|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>CIDADE:</b></label> {{ contrato.cidade|upper|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>BAIRRO:</b></label> {{ contrato.bairro|upper|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>CONTATO</b></div>
+                <fieldset class="fieldset-border">
+                    <div style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>FONE:</b></label> {{ contrato.fone|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>FONE 2:</b></label> {{ contrato.fone|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>EMAIL:</b></label> {{ contrato.email|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>DADOS BANCÁRIOS</b></div>
+                <fieldset class="fieldset-border">
+                    <div class="col-12" style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>BANCO:</b></label> {{ contrato.banco|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>AGÊNCIA:</b></label> {{ contrato.agencia|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DIG. AGÊNCIA:</b></label> {{ contrato.dvagencia|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>TIPO DA CONTA:</b></label> {{ contrato.tipoconta|upper|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>CONTA:</b></label> {{ contrato.conta|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DIG. DA CONTA:</b></label> {{ contrato.dvconta|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>ESTRANGEIRO</b></div>
+                <fieldset class="fieldset-border">
+                    <div class="col-12" style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>TIPO DE IDENTIFICAÇÃO FISCAL:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DE IDENTIFICAÇÃO FISCAL:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>CLASSIFICAÇÃO DO TRABALHADOR ESTRANGEIRO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DA CHEGADA:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>É ESTRANGEIRO:</b></label>
+                                    {% if contrato.estrangeiro == 'T' %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>CASADO COM BRASILEIRO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>POSSUI FILHO COM BRASILEIRO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>NÚMERO DO RNE:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DA EXPEDIÇÃO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>ORGÃO EMISSOR:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="margin-bottom: 110px;border-top: solid 1px black;position: relative; top:0;">
+                <div style="position: absolute; top: 0;">
+                    <div class="col-md-2">
+                        <img style="height: 45px; width: 45px;" align="left" src="{{ link_static }}/images/logo.png"/>
+                    </div>
+                    <div class="col-md-10" style=" font-size: 10px;position: relative; left: 10px;">
+                        <div class="row">SRP - Sistema de Recadastramento de Pessoal</div>
+                        <div class="row">www.layoutsistemas.com.br</div>
+                        <div class="row">Layout Sistemas - (85) 3215-7600</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page" style="margin-bottom: 350px;position: relative;top: 30px">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <div>
+                        <img id="brasao" align="left" style="width: 50px; height: 55px;position: relative;"
+                             src="{{ url }}{{ entidade.brasao.url }}"/>
+                    </div>
+                </div>
+                <div class="col-md-8" style="position: relative; left: -80px;">
+                    <div style="float: left;font-size: 16px;">
+                        <div class="col-md-10 titulo-empresa"><b>{{ entidade }}</b></div>
+                        <div class="col-md-12 titulo-relatorio">{{ titulo }}</div>
+                    </div>
+                </div>
+                <div class="col-md-2" style="position: relative;">
+                    <b>ANO.: {{ ano }}</b>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>SITUAÇÃO FUNCIONAL</b></div>
+                <fieldset class="fieldset-border">
+                    <div class="col-md-12" style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label><b>EFETIVO COM FUNÇÃO
+                                    GRATIFICADA:</b></label>
+                                {% if contrato.efetivo_fuc_gratif %}
+                                    SIM
+                                {% else %}
+                                    NÃO
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <label><b>EFETIVO CEDIDO A OUTRA SECRETARIA DO
+                                    MUNICIPIO:</b></label>
+                                {% if contrato.efetivo_sec_municp %}
+                                    SIM
+                                {% else %}
+                                    NÃO
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label><b>EFETIVO CEDIDO A OUTRO ÓRGÃO OU
+                                    INSTITUIÇÃO:</b></label>
+                                {% if contrato.efetivo_org_inst %}
+                                    SIM
+                                {% else %}
+                                    NÃO
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>EFETIVO COM LICENÇA SEM
+                                        VENCIMENTO:</b></label>
+                                    {% if contrato.efetivo_lic_venc %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>INÍCIO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>FIM:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>NOMEADOS EM ESTÁGIO
+                                        PROBRATÓRIO:</b></label>
+                                    {% if contrato.nomeados_estg_prob %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>INÍCIO:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label><b>FIM:</b></label> {{ contrato. }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>DEFICIÊNCIA</b></div>
+                <fieldset class="fieldset-border">
+                    <div class="col-12" style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>DEFICIÊNCIA FÍSICA?</b></label>
+                                    {% if contrato.defic_fis %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>TIPO DE DEFICIÊNCIA
+                                        FÍSICA:</b></label>
+                                    {% if contrato.tipo_defic_fis %}
+                                        {{ contrato.tipo_defic_fis }}
+                                    {% else %}
+                                        NÃO ESPECIFICADO
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>DEFICIÊNCIA VISIAL?</b></label>
+                                    {% if contrato.defic_vis %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>TIPO DE DEFICIÊNCIA VISUAL:</b></label>
+                                    {% if contrato.tipo_defic_vis %}
+                                        {{ contrato.tipo_defic_vis }}
+                                    {% else %}
+                                        NÃO ESPECIFICADO
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>DEFICIÊNCIA MENTAL?</b></label>
+                                    {% if contrato.defic_ment %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>TIPO DE DEFICIÊNCIA VISUAL:</b></label>
+                                    {% if contrato.tipo_defic_ment %}
+                                        {{ contrato.tipo_defic_ment }}
+                                    {% else %}
+                                        NÃO ESPECIFICADO
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>DEFICIÊNCIA AUDITIVA?</b></label>
+                                    {% if contrato.defic_aud %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DO LAUDO DE MOLÉSTIA
+                                        GRAVE:</b></label> {{ contrato.dtlaudodeficiente|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>DEFICIÊNCIA INTELECTUAL?</b></label>
+                                    {% if contrato.defic_intlec %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>PREENCHE COTA DEF. HABILITADO/REABILITADO?</b></label>
+                                    {% if contrato.cota_def_hab_reab %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>REABILITADO?</b></label>
+                                    {% if contrato.reabilitado %}
+                                        SIM
+                                    {% else %}
+                                        NÃO
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <div class="legend-border"><b>INFORMATIVO - DECLARAÇÃO DE ACUMULO DE CARGO</b></div>
+                <fieldset class="fieldset-border">
+                    <div class="col-12" style="padding: 5px 0px 0px 5px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>CARGO:</b></label> {{ contrato.cargo_acumulo|valida_null|upper }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>LOTAÇÃO:</b></label> {{ contrato.lotacao_acumulo|valida_null|upper }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>DATA DE
+                                        INGRESSO:</b></label> {{ contrato.data_ingresso_acumulo|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>JORNADA:</b></label> {{ contrato.jornada_acumulo|valida_null }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label><b>CARGA
+                                        HORÁRIO:</b></label> {{ contrato.carga_horaria_acumulo|valida_null }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>ESFERA:</b></label>
+                                    {% if contrato.esfera_acumulo %}
+                                        {{ contrato.esfera_acumulo }}
+                                    {% else %}
+                                        NÃO ESPECIFICADO
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label><b>REGIME JURÍDICO:</b></label>
+                                    {% if contrato.regime_juridico_acumulo %}
+                                        {{ contrato.regime_juridico_acumulo }}
+                                    {% else %}
+                                        NÃO ESPECIFICADO
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="col-md-12" style="padding-bottom: 5px">
+                <fieldset class="fieldset-border">
+                    <legend class="legend-border"><b>* * * QUALIFICAÇÃO PROFISSIONAL * * *</b></legend>
+                    <div class="col-12" style="padding: 5px 0px 0px 5px">
+                        {% for Curso in contrato.matricula_curso.all %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label><b>NÍVEL. :</b></label> {{ Curso.get_nivel_display|valida_null|upper }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label><b>CURSO. :</b></label> {{ Curso.nomecurso|valida_null|upper }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group mb-2">
+                                        <label><b>INSTITUIÇÃO. :</b></label> {{ Curso.instituicao|valida_null|upper }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group mb-2">
+                                        <label><b>CARGA HORÁRIO. :</b></label> {{ Curso.carghora|valida_null }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mb-2">
+                                        <label><b>INÍCIO.
+                                            :</b></label> {{ Curso.dtiniciocurso|valida_null|date:"d/m/y" }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mb-2">
+                                        <label><b>FIM. :</b></label> {{ Curso.dtfimcurso|valida_null|date:"d/m/y" }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-12"
+                 style="margin-bottom: 110px;border-top: solid 1px black;position: relative; top:0px;">
+                <div style="position: absolute; top: 0;">
+                    <div class="col-md-2">
+                        <img style="height: 45px; width: 45px;" align="left" src="{{ link_static }}/images/logo.png"/>
+                    </div>
+                    <div class="col-md-10" style=" font-size: 10px;position: relative; left: 10px;">
+                        <div class="row">SRP - Sistema de Recadastramento de Pessoal</div>
+                        <div class="row">www.layoutsistemas.com.br</div>
+                        <div class="row">Layout Sistemas - (85) 3215-7600</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+
+{% endblock %}

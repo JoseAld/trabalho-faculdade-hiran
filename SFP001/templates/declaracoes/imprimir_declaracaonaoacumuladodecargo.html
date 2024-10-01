@@ -1,0 +1,77 @@
+{% extends "relatorios/base/content.html" %}
+{% load static %}
+{% load l10n %}
+{% load coretags %}
+{% block content %}
+    {% for contrato in servidores %}
+        <div class="page" style="margin-bottom: 180px;position: relative;top: 100px">
+            <div style="position: relative;top:100px">
+                <div class="col-md-12" style="height: 60px;">
+                    <div style="float: left; width: 100%;">
+                        <div class="col-md-12 titulo-empresa"
+                             style="text-align: center;font-size: 20px;"><b>{{ entidade }}</b></div>
+                        <div class="col-md-12 titulo-relatorio"
+                             style="text-align: center;font-size: 20px;"><b>{{ titulo }}</b></div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="text-align: justify;font-size: 18px">
+                    <p>
+                        Eu, {{ contrato.nome|valida_null }}, portador do RG.
+                        nº {{ contrato.identidade|valida_null }}, e
+                        do CPF.
+                        nº {{ contrato.cpf|valida_null }}, residente e
+                        domiciliado na {{ contrato.endereco|valida_null }},
+                        nº {{ contrato.endnum|valida_null }}, {{ contrato.bairro|valida_null }}, {{ contrato.cidade|valida_null }}
+                        - {{ contrato.uf|valida_null }},
+                        DECLARO,
+                        para os devidos, QUE NÃO EXERÇO nenhum cargo, função ou
+                        emprego do
+                        quadro de servidores da , autarquias, fundações, empresas públicas, sociedades de economia
+                        mista,
+                        suas subsidiárias e
+                        sociedades controladas direta ou indiretamente pelo poder público, que seja inacumulável com
+                        o
+                        Cargo
+                        em que ocupo,
+                        em consonância com o disposto nos incisos XVI e XVII do art. 37 da Constituição Federal de
+                        05/10/1988;
+                    </p>
+                    <p>
+                        DECLARO QUE NÃO RECEBO proventos de aposentadoria decorrente do art. 40 ou dos arts. 42 e
+                        142 da
+                        Constituição Federal, que seja inacumulável com o Cargo em que exerço;
+                    </p>
+                    <p>
+                        DECLARO, também, estar ciente de que devo comunicar a {{ contrato.entidade|valida_null }}
+                        qualquer
+                        alteração que venha a ocorrer em minha vida funcional que não atenda às determinações legais
+                        vigentes relativamente à
+                        acumulação de cargos, sob pena de responder processo administrativo diciplinar;
+                    </p>
+                    <p>
+                        DECLARO, ainda, estar ciente de que prestar declaração falsa caracteriza o crime previsto no
+                        art.
+                        299 do Código
+                        Penal Brasileiro, e que por tal crime serei responsabilizado, independente das sanções
+                        administrativas, caso se
+                        comprove a inveracidade do declarado neste documento;
+                    </p>
+                    <p> DECLARO, por fim, que tomo ciência, neste ato, de toda a legislação supra referida.</p>
+                </div>
+                <div class="col-md-12" style="text-align: center; margin-top: 115px;font-size: 18px;">
+
+                    <div class="col-md-12" style="margin-bottom: 80px;">
+                        {{ entidade.cidade|valida_null }} - {{ entidade.estado|valida_null }}, {{ datadehoje }}
+                    </div>
+
+                    <div class="col-md-12" style="position: relative; top:50px;">
+                        _____________________________________________________
+                        <p>
+                            Assinatura do Servidor(a)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

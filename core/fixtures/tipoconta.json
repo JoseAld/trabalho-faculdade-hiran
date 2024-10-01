@@ -1,0 +1,281 @@
+[
+  {
+    "model": "banco.tipoconta",
+    "pk": 24,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "999",
+      "descricao": "Conta NSGD                                   "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 25,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "007",
+      "descricao": "Conta Salário                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 26,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "000",
+      "descricao": "Conta Corrente                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 27,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "010",
+      "descricao": "Poupanca Ouro                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 28,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "020",
+      "descricao": "Poupanca Ouro Salario                        "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 29,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "510",
+      "descricao": "Nova Poupanca Ouro                           "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 30,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "520",
+      "descricao": "Nova Poupanca Ouro Salario                   "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 31,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "910",
+      "descricao": "Poupanca Poupex                              "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 32,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "920",
+      "descricao": "Poupanca Poupex Salario                      "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 33,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "960",
+      "descricao": "Nova Poupanca Poupex                         "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 34,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "970",
+      "descricao": "Nova Poupanca Poupex Salario                 "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 35,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "000",
+      "descricao": "Conta Corrente                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 36,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "001",
+      "descricao": "Conta Corrente de Pessoa Fisica              "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 37,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "002",
+      "descricao": "Conta Simples de Pessoa Fisica               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 38,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "003",
+      "descricao": "Conta Corrente de Pessoa Juridica            "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 39,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "006",
+      "descricao": "Entidades Publicas                           "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 40,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "007",
+      "descricao": "Depositos Instituicoes Financeiras           "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 41,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "013",
+      "descricao": "Poupanca de Pessoa Fisica                    "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 42,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "022",
+      "descricao": "Poupanca de Pessoa Juridica                  "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 43,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "023",
+      "descricao": "Conta Caixa Facil                            "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 44,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "028",
+      "descricao": "Poupanca de Credito Imobiliario              "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 45,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "037",
+      "descricao": "Conta Salario                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 46,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "043",
+      "descricao": "Depositos Lotericos                          "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 47,
+    "fields": {
+      "codbanco": 22,
+      "tipoconta": "000",
+      "descricao": "Conta Corrente                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 48,
+    "fields": {
+      "codbanco": 22,
+      "tipoconta": "380",
+      "descricao": "Conta Salario                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 49,
+    "fields": {
+      "codbanco": 22,
+      "tipoconta": "510",
+      "descricao": "Conta Poupanca                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 50,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "000",
+      "descricao": "Nao Informado                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 51,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "001",
+      "descricao": "Conta Corrente                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 52,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "002",
+      "descricao": "Conta Poupanca                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 53,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "003",
+      "descricao": "Cartao Salario                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 54,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "004",
+      "descricao": "DOC                                          "
+    }
+  }
+]

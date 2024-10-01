@@ -1,0 +1,23 @@
+[
+  {
+    "model": "entidades.entidade",
+    "pk": 1,
+    "fields": {
+      "codigo_entidade": 1234,
+      "cnpj": "89165341000120",
+      "razao": "PREFEITURA MODELO",
+      "fone": "85 99999999",
+      "fax": "85 99999999",
+      "email": "prefeitura@gmail.com",
+      "cep": "60500000",
+      "logradouro": "RUA MACEIO",
+      "log_numero": "890",
+      "complemento": null,
+      "bairro": "HENRIQUE JORGE",
+      "cidade": "FORTALEZA",
+      "estado": "CEARÁ",
+      "brasao": "",
+      "entidade_ativo": true
+    }
+  }
+]

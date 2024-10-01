@@ -1,0 +1,91 @@
+{% extends 'base_cadastro.html' %}
+{% block title %} Formulário de Usuários{% endblock %}
+{% block titulo_pagina %}Usuários{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a href="{% url 'home:Home' %}">Layout recad</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'usuarios:listagem_usuario' %}">Lista de Usuários</a></li>
+        <li class="breadcrumb-item active">Formulário de cadastro</li>
+    </ol>
+{% endblock %}
+{% block form %}
+    <form class="needs-validation" id="form_usuario" method="POST">{% csrf_token %}
+
+        <div class="row">
+            <div class="col-md-12 col-xl-6">
+                <label for="id_first_name" class="col-form-label  requiredField">
+                    Primeiro nome<span class="asteriskField">*</span>
+                </label>
+                {{ form.first_name }}
+            </div>
+            <div class="col-md-12 col-xl-6">
+                <label for="id_fone" class="col-form-label  requiredField">
+                    Último nome<span class="asteriskField">*</span>
+                </label>
+                {{ form.last_name }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-xl-6">
+                <label for="id_email" class="col-form-label  requiredField">
+                    E-mail<span class="asteriskField">*</span>
+                </label>
+                {{ form.email }}
+            </div>
+            <div class="col-md-12 col-xl-6">
+                <label for="id_group" class="col-form-label  requiredField">
+                    Grupo<span class="asteriskField">*</span>
+                </label>
+                {{ form.groups }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xl-6">
+                <label for="id_groups" class="col-form-label  requiredField">
+                    Usuário<span class="asteriskField">*</span>
+                </label>
+                {{ form.username }}
+            </div>
+            <div class="col-md-12 col-xl-6">
+                <label for="id_groups" class="col-form-label  requiredField">
+                    Senha<span class="asteriskField">*</span>
+                </label>
+                {{ form.password }}
+            </div>
+        </div>
+{#        <div class="row">#}
+{#            <div class="col-md-12 col-xl-6">#}
+{#                <label for="id_groups" class="col-form-label  requiredField">#}
+{#                    Setor<span class="asteriskField">*</span>#}
+{#                </label>#}
+{#                {{ form.cdsetor }}#}
+{#            </div>#}
+{#        </div>#}
+
+{#        {{ formset.management_form }}#}
+{#        {% for form in formset %}#}
+{#            <div class="row">#}
+{#                <div class="col-md-12 col-xl-12">#}
+{#                    <label for="id_setor" class="col-form-label  requiredField">#}
+{#                        Setor<span class="asteriskField">*</span>#}
+{#                    </label>#}
+{#                    {{ form.cdsetor }}#}
+{#                </div>#}
+{#            </div>#}
+{#        {% endfor %}#}
+
+        <div class="row mt-2">
+            <div class="col-md-2 col-xl-2">
+                <div class="form-group mb-0 text-center">
+                    <button class="ladda-button btn btn-primary btn-block" id="salvar" type="submit"
+                            data-style="expand-right">Salvar
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-2 col-xl-2">
+                <a class="btn btn-danger btn-block" href="{% url 'usuarios:listagem_usuario' %}">Cancelar</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

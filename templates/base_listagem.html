@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load coretags %}
+
+{% block conteudo %}
+    <!-- Start Content-->
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        {% block breadcrumb %} {% endblock %}
+                    </div>
+                    <h4 class="page-title">{% block titulo_pagina_listagem %}{% endblock %}</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            {% block rota %}
+                                <div class="col-md-6 col-xl-6" style="float: left">
+                                    <a class="btn btn-success btn-sm" href="{% block rota_cadastro %}{% endblock %}"
+                                       role="button">{% block nome %}{% endblock %}</a>
+                                </div>
+                            {% endblock %}
+
+                            <div class="col-md-12 col-xl-12" style="float: right">
+                                {% block filtros %}{% endblock %}
+                            </div>
+
+                        </div>
+                        <div class="table-responsive">
+                            <div>
+                                <table class="table table-bordered table-hover table-sm mb-0" id="tableListagem">
+                                    <thead>
+                                    <tr>
+                                        {% block colunas %}
+                                        {% endblock %}
+                                    </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                    {% block dados %}
+                                    {% endblock %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- Pagination -->
+                        <div class="row d-flex justify-content-between">
+
+                            <div class="col-lg-6 mt-2">
+                                <div class="dataTables_info" id="basic-datatable_info" role="status" aria-live="polite">
+                                    Exibindo
+                                    {{ page_obj.number }} de {{ page_obj.paginator.per_page }} de um total
+                                    de {{ page_obj.paginator.num_pages }} páginas.
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex justify-content-end mt-2">
+                                <ul class="pagination pagination-rounded">
+                                    {% if page_obj.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                               href="?{% url_replace page=page_obj.previous_page_number %}">&laquo;</a>
+                                        </li>
+                                    {% endif %}
+                                    {% for pg in page_obj.paginator.page_range %}
+                                        <!-- Sempre mostra as 2 primeiras e 2 últimas páginas -->
+                                        {% if pg == 1 or pg == page_obj.paginator.num_pages|add:'-2' or pg == page_obj.paginator.num_pages|add:'-1' %}
+                                            {% if page_obj.number == pg %}
+                                                <li class="page-item active">
+                                                    <a class="page-link" href="?{% url_replace page=pg %}">{{ pg }}</a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?{% url_replace page=pg %}">{{ pg }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% else %}
+                                            {% if page_obj.number == pg %}
+                                                <li class="page-item active">
+                                                    <a class="page-link" href="?{% url_replace page=pg %}">{{ pg }}</a>
+                                                </li>
+                                            {% elif pg > page_obj.number|add:'-2' and pg < page_obj.number|add:'2' %}
+                                                <!-- Mostra 2 páginas antes e 2 páginas depois da atual -->
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?{% url_replace page=pg %}">{{ pg }}</a>
+                                                </li>
+                                            {% elif pg == page_obj.number|add:'-2' or pg == page_obj.number|add:'2' %}
+                                                <li class="page-item">
+                                                    <a class="page-link" href="">...</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if page_obj.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                               href="?{% url_replace page=page_obj.next_page_number %}">&raquo;</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card body-->
+                </div>
+                <!-- end card -->
+            </div>
+            <!-- end col-->
+        </div>
+        <!-- end row-->
+    </div>
+{% endblock %}
+
+{% block script %}{% endblock %}

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt" data-ng-app="app">
+<head>
+    <meta charset="utf-8"/>
+{#    <link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">#}
+{#    <link href="{{ link_static }}/css/styles.css" rel="stylesheet">#}
+{#    <link href="{{ link_static }}/css/styles.css" rel="stylesheet">#}
+{#    {% static "css/styles.css" %}#}
+</head>
+<body>
+    <div style="height: 120px">
+        <div style="float: left; width: 12%;">
+            <img align="left" width="100" height="100" src="{{ dados.logo }}"/>
+        </div>
+        <div style="float: left; width: 88%;">
+            <div class="col-md-10 titulo-empresa">{{ empresa }}</div>
+            <div class="col-md-2 titulo-empresa text-right">{{ dados.competencia }}</div>
+            <div class="col-md-12 titulo-relatorio" {% if filtros != '' %}style="padding-bottom: 5px;"{% endif %}>{{ titulo }}</div>
+            {% if filtros != '' %}
+                <div class="col-md-12 titulo-relatorio">FILTRO UTILIZADO: {{ filtros }}</div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

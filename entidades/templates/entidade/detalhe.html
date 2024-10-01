@@ -1,0 +1,49 @@
+{% extends 'base_cadastro.html' %}
+{% load static %}
+{% block title %} Detalhes de entidade{% endblock %}
+{% block form_tipo %}Detalhes da entidade{% endblock %}
+{% block form %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mt-3">
+                            <p><b>Código da entidade : </b>{{ object.codigo_entidade }}</p>
+                            <p><b>CNPJ : </b>{{ object.formatar.cnpj }}</p>
+                            <p><b>Razão : </b>{{ object.razao }}</p>
+                            <p><b>Telefone : </b>{{ object.formatar.fone }}</p>
+                            <p><b>Fax : </b>{{ object.formatar.fax }}</p>
+                            <p><b>E-mail : </b>{{ object.email }}</p>
+                        </div>
+
+                    </div><!-- end col -->
+                    <div class="col-md-6">
+                        <div class="mt-3">
+                            <p><b>CEP : </b>{{ object.formatar.cep }}</p>
+                            <p><b>Endereço : </b>{{ object.logradouro }},
+                                N° {{ object.log_numero }}, {{ object.complemento|default_if_none:"" }}{{ object.bairro }}</p>
+                            <p><b>Cidade : </b>{{ object.cidade }}</p>
+                            <p><b>Estado : </b>{{ object.estado }}</p>
+
+                        </div>
+
+                    </div><!-- end col -->
+                </div>
+                <!-- end row -->
+
+                <div class="mt-4 mb-1">
+                    <div class="text-right d-print-none">
+                        <a href="javascript:window.print()" class="btn btn-light waves-effect waves-light"><i
+                                class="mdi mdi-printer mr-1"></i> Imprimir</a>
+
+                         <a style="margin-left: 20px; width: 150px; background-color: #7e57c2;" class="ladda-button btn btn-primary btn-block" href="{% url 'entidades:atualizar_entidade' entidade.id %}">Editar</a>
+                    </div>
+                </div>
+            </div> <!-- end card-box -->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+    <hr class="d-print-none">
+{% endblock %}

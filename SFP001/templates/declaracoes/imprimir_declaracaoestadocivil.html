@@ -1,0 +1,74 @@
+{% extends "relatorios/base/content.html" %}
+{% load static %}
+{% load l10n %}
+{% load coretags %}
+{% block content %}
+    {% for contrato in servidores %}
+        <div class="page" style="position: relative;top: 60px;margin-bottom: 180px">
+            <div style="height: 100px;">
+                <div style="float: left; width: 100%;">
+                    <div class="col-md-12 titulo-empresa" style="text-align: center;font-size: 20px"><b>{{ entidade }}</b></div>
+                    <div class="col-md-12 titulo-relatorio"
+                         style="text-align: center;font-size: 20px;"><b>{{ titulo }}</b></div>
+                </div>
+            </div>
+            <div class="col-md-12" style="font-size: 18px;">
+                <p style="text-align: justify;">
+                    Declaro para os devidos fins de direito que se fizerem necessários, que
+                    eu {{ contrato.nome|valida_null }},estado civil
+                    {{ contrato.get_estcivil_display|valida_null }}, portador(a) do CPF {{ contrato.cpf }},
+                    RG {{ contrato.identidade|valida_null }}, nascido(a) na data
+                    de {{ contrato.dtnasc|date:"d/m/y"|valida_null }} em
+                    {{ contrato.cidnasc|valida_null }}, estou vivo(a) e
+                    resido na {{ contrato.endereco }}, nº {{ contrato.endnum }}, complemento
+                    _______________________________, bairro {{ contrato.bairro }}, cidade {{ contrato.cidade }},
+                    estado
+                    {{ contrato.uf|valida_null }}, CEP {{ contrato.cep|valida_null }}, cujo telefone para
+                    contato
+                    é {{ contrato.fone|valida_null }}.
+
+                </p>
+            </div>
+
+            <div class="col-md-12" style="text-align: center; margin-top: 100px">
+                <div style="margin-bottom: 100px">
+                    {{ entidade.cidade }}-{{ entidade.estado }}, {{ datadehoje }}
+                </div>
+                <div style="position: relative; top: 60px;">
+                    ______________________________________________________________________
+                    <p>
+                        Assinatura com reconhecimento de firma por autenticidade
+                    </p>
+                </div>
+                <div class="col-md-12" style="position: relative; top:300px;">
+                    <div class="col-md-6">
+                        __________________________________________
+                        <p>
+                            <b>
+                                Testemunha 1<br>
+                            </b>
+                            Nome completo<br>
+                            RG e CPF
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        __________________________________________
+                        <p>
+                            <b>
+                                Testemunha 2<br>
+                            </b>
+                            Nome completo<br>
+                            RG e CPF
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-12" style="position: relative; top:450px;">
+                    <div style="border-top: solid 1px black">
+                        {{ entidade.logradouro }}<br>
+                        {{ contrato.entidade }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

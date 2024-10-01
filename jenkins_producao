@@ -1,0 +1,29 @@
+pipeline {
+  agent any
+  stages {
+    stage('Staging') {
+      steps { 
+
+            
+             sh 'git checkout origin/staging'
+
+             sh 'git checkout staging || git checkout -b staging'
+
+             sh 'git checkout origin/master'
+
+             sh 'git checkout master || git checkout -b master'
+
+             sh 'git merge origin/staging'
+
+             sh 'git push origin master'
+      }
+    }
+    stage('Produção') {
+      steps {
+             
+             sh 'ssh ubuntu@recad.layoutsistemas.com.br ./server/deploy.sh recad_web production'
+
+        }
+    }
+  }
+}

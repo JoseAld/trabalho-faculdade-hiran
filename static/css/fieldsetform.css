@@ -1,0 +1,56 @@
+.fieldset-border-form {
+    width: auto;
+    border: #d3d3d3 1px solid;
+    padding: 10px 20px 10px 20px;
+    margin: 0px 0px 10px 0px;
+    -webkit-box-shadow: 0px 0px 0px 0px #d3d3d3;
+    box-shadow: 0px 0px 0px 0px #d3d3d3;
+    font-size: 14px;
+}
+
+.fieldset-border-form .legend-border-form {
+    font-size: 15px;
+    text-align: left;
+    width: auto;
+    border-bottom: none;
+    font-weight: bold;
+    margin-top: -21px;
+    background-color: #fff;
+}
+
+.legend-border-form {
+    padding: 0px 5px 0px 5px;
+}
+
+.borda-fieldset {
+    border: #d3d3d3 1px solid;
+    padding: 10px 20px 10px 20px;
+    margin: 0px 0px 0px 0px;
+
+}
+
+.fieldset-border-foto {
+    width: auto;
+    border: #d3d3d3 1px solid;
+    margin: 0px 0px 10px 0px;
+    -webkit-box-shadow: 0px 0px 0px 0px #d3d3d3;
+    box-shadow: 0px 0px 0px 0px #d3d3d3;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.fieldset-border-foto .legend-border-form {
+    font-size: 15px;
+    text-align: left;
+    width: auto;
+    border-bottom: none;
+    font-weight: bold;
+
+}
+
+#id_foto_webcam {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,105 @@
+{% extends 'base_cadastro.html' %}
+{% block title %} Formulario de usuário{% endblock %}
+{% block titulo_pagina %}Usuários{% endblock %}
+
+{% block form %}
+<div class="row">
+    <div class="col-12">
+
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mt-3">
+                        <p><b>Primeiro nome: </b>{{ dados.first_name }}</p>
+                        <p><b>E-mail : </b>{{ dados.email }}</p>
+                    </div>
+
+                </div><!-- end col -->
+                <div class="col-md-6">
+                    <div class="mt-3">
+                        <p><b>Último nome: </b>{{ dados.last_name }}</p>
+                        <p><b>Grupo : </b>{{ dados.groups.all.first|default_if_none:'' }}</p>
+                    </div>
+                </div><!-- end col -->
+            </div>
+            <!-- end row -->
+        </div> <!-- end card-box -->
+
+    </div> <!-- end col -->
+</div>
+
+<hr>
+<div class="card">
+    <div class="card-body">
+        <div class="col-md-12">
+            <div class="row">
+                <h3>Dados Pessoais</h3>
+            </div>
+            <form class="needs-validation" id="form" method="POST">{% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12 col-xl-6">
+                        <div class="form-group mb-3">
+                            <label for="id_first_name" class="col-form-label  requiredField">
+                                Primeiro nome<span class="asteriskField">*</span>
+                            </label>
+                            {{ form.first_name }}
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xl-6">
+                        <div class="form-group mb-3">
+                            <label for="id_email" class="col-form-label  requiredField">
+                                Último nome<span class="asteriskField">*</span>
+                            </label>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12 col-xl-6">
+                        <div class="form-group mb-3">
+                            <label for="id_fone" class="col-form-label  requiredField">
+                                Email<span class="asteriskField">*</span>
+                            </label>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xl-6">
+                        <div class="form-group mb-3">
+                            <label for="id_groups" class="col-form-label  requiredField">
+                                Grupos<span class="asteriskField">*</span>
+                            </label>
+                            {{ form.groups }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xl-6">
+                        <div class="form-group mb-3">
+                            <label for="id_groups" class="col-form-label  requiredField">
+                                Usuário<span class="asteriskField">*</span>
+                            </label>
+                            {{ form.username }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-2 col-xl-2">
+                        <div class="form-group mb-0 text-center">
+                            <button class="ladda-button btn btn-primary btn-block" type="submit"
+                                    data-style="expand-right" name="salvar">Salvar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-xl-2">
+                        <a class="btn btn-danger btn-block" href="javascript:history.back()">Voltar</a>
+                    </div>
+                </div>
+            </form>
+        </div> <!-- end card-box-->
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,928 @@
+[
+  {
+    "model": "controle.controle",
+    "pk": 1,
+    "fields": {
+      "entidade": 1,
+      "campo": "CPF",
+      "descricao": "CPF",
+      "obrigatorio": false,
+      "nao_importar": false
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 2,
+    "fields": {
+      "entidade": 1,
+      "campo": "MATRICULA",
+      "descricao": "Matricula",
+      "obrigatorio": null,
+      "nao_importar": false
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 3,
+    "fields": {
+      "entidade": 1,
+      "campo": "SISTEMA",
+      "descricao": "Vinculo",
+      "obrigatorio": null,
+      "nao_importar": false
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 4,
+    "fields": {
+      "entidade": 1,
+      "campo": "CDSECRETA",
+      "descricao": "Secretaria",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 5,
+    "fields": {
+      "entidade": 1,
+      "campo": "CDSETOR",
+      "descricao": "Setor",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 6,
+    "fields": {
+      "entidade": 1,
+      "campo": "NOME",
+      "descricao": "Nome",
+      "obrigatorio": false,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 7,
+    "fields": {
+      "entidade": 1,
+      "campo": "FUNCAO",
+      "descricao": "Cargo",
+      "obrigatorio": false,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 8,
+    "fields": {
+      "entidade": 1,
+      "campo": "NOMEPAI",
+      "descricao": "Nome do Pai",
+      "obrigatorio": false,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 9,
+    "fields": {
+      "entidade": 1,
+      "campo": "NOMEMAE",
+      "descricao": "Nome da Mãe",
+      "obrigatorio": false,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 10,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTNASC",
+      "descricao": "Data de Nascimento",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 11,
+    "fields": {
+      "entidade": 1,
+      "campo": "CIDNASC",
+      "descricao": "Cidade de Nascimento",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 12,
+    "fields": {
+      "entidade": 1,
+      "campo": "UFNASC",
+      "descricao": "Uf de Nascimento",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 13,
+    "fields": {
+      "entidade": 1,
+      "campo": "ENDERECO",
+      "descricao": "Endereço",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 14,
+    "fields": {
+      "entidade": 1,
+      "campo": "ENDNUM",
+      "descricao": "Número",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 15,
+    "fields": {
+      "entidade": 1,
+      "campo": "BAIRRO",
+      "descricao": "Bairro",
+      "obrigatorio": false,
+      "nao_importar": false
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 16,
+    "fields": {
+      "entidade": 1,
+      "campo": "CEP",
+      "descricao": "CEP",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 17,
+    "fields": {
+      "entidade": 1,
+      "campo": "CIDADE",
+      "descricao": "Cidade",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 18,
+    "fields": {
+      "entidade": 1,
+      "campo": "UF",
+      "descricao": "UF",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 19,
+    "fields": {
+      "entidade": 1,
+      "campo": "FONE",
+      "descricao": "Fone",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 20,
+    "fields": {
+      "entidade": 1,
+      "campo": "SEXO",
+      "descricao": "Sexo",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 21,
+    "fields": {
+      "entidade": 1,
+      "campo": "GRINSTR",
+      "descricao": "Graú de Instrução",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 22,
+    "fields": {
+      "entidade": 1,
+      "campo": "ESTCIVIL",
+      "descricao": "Estado Civil",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 23,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTADMISSAO",
+      "descricao": "Data de Admissão",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 24,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTOPCAO",
+      "descricao": "Data de Opção",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 25,
+    "fields": {
+      "entidade": 1,
+      "campo": "IDENTIDADE",
+      "descricao": "Numero da Identidade",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 26,
+    "fields": {
+      "entidade": 1,
+      "campo": "ORGAOIDENT",
+      "descricao": "Órgão Emissor",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 27,
+    "fields": {
+      "entidade": 1,
+      "campo": "UFIDENT",
+      "descricao": "UF da identidade",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 28,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTIDENT",
+      "descricao": "Data Emissão da Identidade",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 29,
+    "fields": {
+      "entidade": 1,
+      "campo": "NUMCARTPROF",
+      "descricao": "Carteira de Trabalho",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 30,
+    "fields": {
+      "entidade": 1,
+      "campo": "SERIECARTPROF",
+      "descricao": "Série da Carteira de Trabalho",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 31,
+    "fields": {
+      "entidade": 1,
+      "campo": "UFCARTPROF",
+      "descricao": "Uf da Carteira de Trabalho",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 32,
+    "fields": {
+      "entidade": 1,
+      "campo": "PISPASEP",
+      "descricao": "PISPASEP",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 33,
+    "fields": {
+      "entidade": 1,
+      "campo": "TITELEITOR",
+      "descricao": "Título de Eleitor",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 34,
+    "fields": {
+      "entidade": 1,
+      "campo": "ZONA",
+      "descricao": "Zona ",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 35,
+    "fields": {
+      "entidade": 1,
+      "campo": "SECAO",
+      "descricao": "Seção",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 36,
+    "fields": {
+      "entidade": 1,
+      "campo": "CNH",
+      "descricao": "CNH",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 37,
+    "fields": {
+      "entidade": 1,
+      "campo": "CNHCAT",
+      "descricao": "Categoria da CNH",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 38,
+    "fields": {
+      "entidade": 1,
+      "campo": "APELIDO",
+      "descricao": "Apelido",
+      "obrigatorio": false,
+      "nao_importar": false
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 39,
+    "fields": {
+      "entidade": 1,
+      "campo": "BANCO",
+      "descricao": "Banco",
+      "obrigatorio": false,
+      "nao_importar": false
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 40,
+    "fields": {
+      "entidade": 1,
+      "campo": "AGENCIA",
+      "descricao": "Agência",
+      "obrigatorio": false,
+      "nao_importar": false
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 41,
+    "fields": {
+      "entidade": 1,
+      "campo": "DVAGENCIA",
+      "descricao": "Digito Agência",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 42,
+    "fields": {
+      "entidade": 1,
+      "campo": "TIPOCONTA",
+      "descricao": "Tipo de Conta",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 43,
+    "fields": {
+      "entidade": 1,
+      "campo": "CONTA",
+      "descricao": "Conta Bancária",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 44,
+    "fields": {
+      "entidade": 1,
+      "campo": "DVCONTA",
+      "descricao": "Digito da Conta",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 45,
+    "fields": {
+      "entidade": 1,
+      "campo": "HORTRAB",
+      "descricao": "Horas Semanais",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 46,
+    "fields": {
+      "entidade": 1,
+      "campo": "HORBASE",
+      "descricao": "Hotas Mensais",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 47,
+    "fields": {
+      "entidade": 1,
+      "campo": "CODIGOFUN",
+      "descricao": "Matricula Anterior",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 48,
+    "fields": {
+      "entidade": 1,
+      "campo": "OBS",
+      "descricao": "Observações",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 49,
+    "fields": {
+      "entidade": 1,
+      "campo": "CODESC",
+      "descricao": "Escola",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 50,
+    "fields": {
+      "entidade": 1,
+      "campo": "CODESC2",
+      "descricao": "Escola 2",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 51,
+    "fields": {
+      "entidade": 1,
+      "campo": "FUNCAO2",
+      "descricao": "Função",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 52,
+    "fields": {
+      "entidade": 1,
+      "campo": "CLASSE",
+      "descricao": "CLASSE",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 53,
+    "fields": {
+      "entidade": 1,
+      "campo": "NIVEL",
+      "descricao": "NIVEL",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 54,
+    "fields": {
+      "entidade": 1,
+      "campo": "BRASILEIRO",
+      "descricao": "Brasileiro",
+      "obrigatorio": false,
+      "nao_importar": false
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 55,
+    "fields": {
+      "entidade": 1,
+      "campo": "CODNACION",
+      "descricao": "Cod. Nacionalidade",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 56,
+    "fields": {
+      "entidade": 1,
+      "campo": "NACIONALID",
+      "descricao": "Nascionalidade",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 57,
+    "fields": {
+      "entidade": 1,
+      "campo": "NATURALIZA",
+      "descricao": "Naturalizado",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 58,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTBRASIL",
+      "descricao": "Data Chegada Brasil",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 59,
+    "fields": {
+      "entidade": 1,
+      "campo": "CARTBRASIL",
+      "descricao": "Cart. Brasil",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 60,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTCONCURSO",
+      "descricao": "Data Concurso",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 61,
+    "fields": {
+      "entidade": 1,
+      "campo": "CLASSIFIC",
+      "descricao": "Classificação no concurso",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 62,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTCONCURS2",
+      "descricao": "Data de Concurso 2",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 63,
+    "fields": {
+      "entidade": 1,
+      "campo": "CLASSIFIC2",
+      "descricao": "Classificação no concurso 2",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 64,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTPOSSE",
+      "descricao": "Data da Posse",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 65,
+    "fields": {
+      "entidade": 1,
+      "campo": "TIPDECRETO",
+      "descricao": "Tipo de Decreto",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 66,
+    "fields": {
+      "entidade": 1,
+      "campo": "NUMDECRETO",
+      "descricao": "Número do Decreto",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 67,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTDECRETO",
+      "descricao": "Data do decreto",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 68,
+    "fields": {
+      "entidade": 1,
+      "campo": "MATRICFUN",
+      "descricao": "Matricula Anterior",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 69,
+    "fields": {
+      "entidade": 1,
+      "campo": "EMAIL",
+      "descricao": "e-mail",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 70,
+    "fields": {
+      "entidade": 1,
+      "campo": "TIPOADMIS",
+      "descricao": "Tipo de Admissão",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 71,
+    "fields": {
+      "entidade": 1,
+      "campo": "DEFICIENTE",
+      "descricao": "Deficiente",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 72,
+    "fields": {
+      "entidade": 1,
+      "campo": "FORMACAO",
+      "descricao": "Formação",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 73,
+    "fields": {
+      "entidade": 1,
+      "campo": "FONE2",
+      "descricao": "Fone 2",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 74,
+    "fields": {
+      "entidade": 1,
+      "campo": "FONECEL",
+      "descricao": "Celular",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 75,
+    "fields": {
+      "entidade": 1,
+      "campo": "CERTMILIT",
+      "descricao": "Cerificado Militar",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 76,
+    "fields": {
+      "entidade": 1,
+      "campo": "CIDVOTA",
+      "descricao": "Cidade de Votação",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 77,
+    "fields": {
+      "entidade": 1,
+      "campo": "DTPISPASEP",
+      "descricao": "Data Pisppasep",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 78,
+    "fields": {
+      "entidade": 1,
+      "campo": "RAISTRAB",
+      "descricao": "Cod. RAIS",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 79,
+    "fields": {
+      "entidade": 1,
+      "campo": "RAISCOR",
+      "descricao": "Cod. Cor",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 80,
+    "fields": {
+      "entidade": 1,
+      "campo": "TIPAMPARO",
+      "descricao": "Tipo de Amparo",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 81,
+    "fields": {
+      "entidade": 1,
+      "campo": "NUMAMPARO",
+      "descricao": "Nùmero do Amparo",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 82,
+    "fields": {
+      "entidade": 1,
+      "campo": "DATAMPARO",
+      "descricao": "Data do Amparo",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 83,
+    "fields": {
+      "entidade": 1,
+      "campo": "PUBAMPARO",
+      "descricao": "Publicação do Amparo",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+  },
+  {
+    "model": "controle.controle",
+    "pk": 84,
+    "fields": {
+      "entidade": 1,
+      "campo": "TPLOGRADOURO",
+      "descricao": "Tipo Logradouro",
+      "obrigatorio": null,
+      "nao_importar": null
+    }
+
+  }
+
+]

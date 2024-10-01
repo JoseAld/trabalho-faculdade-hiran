@@ -1,0 +1,455 @@
+{% extends 'base.html' %}
+{% block title %}Relatórios|Declarações{% endblock %}
+{% load static %}
+{% load coretags %}
+
+{% block conteudo %}
+<!-- Start Content-->
+<div class="container-fluid">
+
+<style>.app-menu {
+  max-height: 1201px;
+  min-height: 1200px;
+</style>
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    {% block breadcrumb %}
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{% url 'home:Home' %}">Layout recad</a></li>
+                        <li class="breadcrumb-item active">Relatórios|Declarações</li>
+                    </ol>
+                    {% endblock %}
+                </div>
+                <h4 class="page-title">{% block titulo_pagina_listagem %}Relatórios | Declarações{% endblock %}</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-12">
+                        <fieldset class="fieldset-border-form">
+                            <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">
+                                Filtro
+                            </legend>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="radio radio-success">
+                                        <input type="radio" id="customRadio1" name="radioRecad"
+                                               class="form-check-input" value="finalizados"
+                                               {% if request.GET.tipo == 'finalizados' %}checked{% endif %}>
+                                        <label class="radio radio-success" for="customRadio1">Servidores  Cadastrados</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="radio radio-success">
+                                        <input type="radio" id="customRadio3" name="radioRecad"
+                                               class="form-check-input" value="SNC"
+                                               {% if request.GET.tipo == 'SNC' %}checked{% endif %}>
+                                        <label class="radio radio-success"
+                                               for="customRadio3">Servidores Não Cadastrados</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="radio radio-success">
+                                        <input type="radio" id="customRadio2" name="radioRecad"
+                                               class="form-check-input" value="todos"
+                                               {% if request.GET.tipo == 'todos' or request.GET.tipo == None %}checked{% endif %}>
+                                        <label class="radio radio-success"
+                                               for="customRadio2">Todos</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-12">
+                        <div class="nav nav-tabs nav-bordered" id="nav-tab" role="tablist">
+                            <li class="nav-item show active">
+                                <a href="#listagem_ficha" data-bs-toggle="tab" aria-expanded="false"
+                                   class="nav-link active" id="nav-listagem-ficha">
+                                    Deficiência
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#nav-declaracoes" data-bs-toggle="tab" aria-expanded="false"
+                                   class="nav-link" id="nav-declaraçoes-tab">
+                                    Declarações
+                                </a>
+                            </li>
+                        </div>
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane show active" id="listagem_ficha" role="tabpanel"
+                                 aria-labelledby="nav-listagem-ficha">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="radio radio-success">
+                                                    <input type="radio" id="customRadio4"
+                                                           name="radioTipoRelatorio"
+                                                           class="form-check-input" value="1" checked>
+                                                    <label class="radio radio-success"
+                                                           for="customRadio4" href="#">Ficha Pessoal</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="radio radio-success">
+                                                    <input type="radio" id="customRadio5"
+                                                           name="radioTipoRelatorio"
+                                                           class="form-check-input" value="2">
+                                                    <label class="radio radio-success"
+                                                           for="customRadio5">Funcionários</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="radio radio-success">
+                                                    <input type="radio" id="customRadio6"
+                                                           name="radioTipoRelatorio"
+                                                           class="form-check-input" value="3">
+                                                    <label class="radio radio-success"
+                                                           for="customRadio6">Recadastramento</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="radio radio-success">
+                                                    <input type="radio" id="customRadio7"
+                                                           name="radioTipoRelatorio"
+                                                           class="form-check-input" value="4">
+                                                    <label class="radio radio-success"
+                                                           for="customRadio7">Recadastramento Detalhado</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="nav-declaracoes" role="tabpanel"
+                                 aria-labelledby="nav-declaraçoes-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group mb-2">
+                                                    <select class="js-example-responsive" style="width: 100%">
+                                                        <option id="selectDeclaracao1"
+                                                                name="selectTipoDeclaracao" value="1" selected>
+                                                            Acumulo de Cargos
+                                                        </option>
+                                                        <option id="selectDeclaracao2"
+                                                                name="selectTipoDeclaracao" value="2">Não
+                                                            acumulado de cargo
+                                                        </option>
+                                                        <option id="selectDeclaracao3"
+                                                                name="selectTipoDeclaracao" value="3">Estado civil
+                                                        </option>
+                                                        <option id="selectDeclaracao4"
+                                                                name="selectTipoDeclaracao" value="4">Documento Contratação
+                                                        </option>
+                                                        <option id="selectDeclaracao5"
+                                                                name="selectTipoDeclaracao" value="5">União estável
+                                                        </option>
+                                                        <option id="selectDeclaracao6"
+                                                                name="selectTipoDeclaracao" value="6">Possuo bens
+                                                        </option>
+                                                        <option id="selectDeclaracao7"
+                                                                name="selectTipoDeclaracao" value="7">Não possuo bens
+                                                        </option>
+                                                        <option id="selectDeclaracao8"
+                                                                name="selectTipoDeclaracao" value="8">Parentesco
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end card body-->
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row" style="float: left">
+
+                                    <div class="col-md-2" style="margin-bottom: 10px">
+                                        <div class="btn-group">
+                                            <button class="btn input-group-text btn-blue waves-effect waves-light dropdown-toggle"
+                                                    type="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">Impressão <i
+                                                    class="mdi mdi-chevron-down"></i></button>
+                                            <div class="dropdown-menu"
+                                                 style="position: absolute; will-change: transform; top: 0; left: 0; transform: translate3d(0px, 37px, 0px);">
+                                                <a class="dropdown-item" href="#" onclick="imprimirSelecao(false)">Selecionados</a>
+                                                <a class="dropdown-item" href="#"
+                                                   onclick="imprimirSelecao(true)">Todos</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                {% block filtros %}
+                                <div class="col-md-4" style="float: right;margin: 0; padding: 0;">
+                                    <form>
+                                        <div class="input-group">
+                                            {% if request.GET.tipo %}
+                                            <input name="tipo" type="hidden" value="{{ request.GET.tipo }}"/>
+                                            {% endif %}
+                                            <input name="search" id="searchInput" class="form-control form-control-sm" placeholder="Pesquisar por nome ou matricula..."/>
+                                        </div>
+                                    </form>
+                                </div>
+                                {% endblock %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table id="tableServidores"
+                                           class="table table-bordered table-hover table-sm mb-0">
+                                        <thead class="align-middle text-center">
+                                        <tr>
+                                            <th class="bs-checkbox" style="padding: 0;">
+                                                <div class="th-inner">
+                                                    <label>
+                                                        <input id="selectall" onclick="selectall()"
+                                                               type="checkbox" class="form-check-input"/>
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </th>
+                                            <th>Status</th>
+                                            <th>Matricula</th>
+                                            <th>Nome do Servidor</th>
+                                            <th>CPF</th>
+                                            <th>Data de Admissão</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="align-middle text-center" style="padding:0;">
+                                        {% for serv in servidores %}
+                                        <tr>
+                                            <td class="bs-checkbox">
+                                                <label style="position: relative; top: 6px;">
+                                                    <input data-index="0" name="btSelectItem" type="checkbox" class="form-check-input" value="{{ serv.id }}">
+                                                    <span></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                {% if serv.status == 'I' %}
+                                                <i class="fas fa-user-clock fa-lg text-danger" title="Pendente"></i>
+                                                {% elif serv.status == 'E' %}
+                                                <i class="fas fa-user-edit fa-lg text-warning" title="Editado"></i>
+                                                {% else %}
+                                                <i class="fas fa-user-check fa-lg text-success" title="Finalizado"></i>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ serv.matricula|valida_null }}</td>
+                                            <td>{{ serv.nome|valida_null }}</td>
+                                            <td>{{ serv.cpf|valida_null }}</td>
+                                            <td>{{ serv.dtadmissao|date:"d/m/y"|valida_null }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row d-flex justify-content-between">
+
+                                    <div class="col-lg-6 mt-2">
+                                        <div class="dataTables_info" id="basic-datatable_info" role="status"
+                                             aria-live="polite">Exibindo {{ page_obj.paginator.per_page }} servidores de um total de {{ page_obj.paginator.count }} servidores.
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 d-flex justify-content-end mt-2">
+                                        {% if page_obj.paginator.num_pages > 0 %}
+                                        <ul class="pagination pagination-rounded">
+                                            {% if page_obj.has_previous %}
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   href="?{% url_replace page=page_obj.previous_page_number %}">&laquo;</a>
+                                            </li>
+                                            {% endif %}
+                                            {% for pg in page_obj.paginator.page_range %}
+                                            <!-- Sempre mostra as 2 primeiras e 2 últimas páginas -->
+                                            {% if pg == 1 or pg == page_obj.paginator.num_pages|add:'-2' or pg == page_obj.paginator.num_pages|add:'-1' %}
+                                            {% if page_obj.number == pg %}
+                                            <li class="page-item active">
+                                                <a class="page-link" href="?{% url_replace page=pg %}">{{ pg }}</a>
+                                            </li>
+                                            {% else %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?{% url_replace page=pg %}">{{ pg }}</a>
+                                            </li>
+                                            {% endif %}
+                                            {% else %}
+                                            {% if page_obj.number == pg %}
+                                            <li class="page-item active">
+                                                <a class="page-link" href="?{% url_replace page=pg %}">{{ pg }}</a>
+                                            </li>
+                                            {% elif pg > page_obj.number|add:'-2' and pg < page_obj.number|add:'2' %}
+                                            <!-- Mostra 2 páginas antes e 2 páginas depois da atual -->
+                                            <li class="page-item">
+                                                <a class="page-link" href="?{% url_replace page=pg %}">{{ pg }}</a>
+                                            </li>
+                                            {% elif pg == page_obj.number|add:'-2' or pg == page_obj.number|add:'2' %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="">...</a>
+                                            </li>
+                                            {% endif %}
+                                            {% endif %}
+                                            {% endfor %}
+
+                                            {% if page_obj.has_next %}
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   href="?{% url_replace page=page_obj.next_page_number %}">&raquo;</a>
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end card -->
+</div>
+<!-- end col-->
+</div>
+<!-- end row-->
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    $('#searchInput').on('input', function (e) {
+        if ('' === this.value) {
+            window.location.href = "{% url 'SFP001:relatorio_listafuncionario' %}";
+        }
+    });
+</script>
+<script>
+    function selectall() {
+        let cks = document.querySelectorAll('input[type=checkbox]')
+
+        // Pegando o status (true/false) do checkbox de select all
+        let selectAllStatus = document.getElementById("selectall").checked
+
+        for (let i = 0; i < cks.length; i++) {
+            // verificando se o checkbox em questão não é o select all
+            if (cks[i].id !== "selectall") {
+                // setando o status de todos de acordo com o do select all
+                cks[i].checked = selectAllStatus
+            }
+        }
+    }
+</script>
+
+<script>
+    $('input[type=radio][name=radioRecad]').change(function () {
+        location.href = '?tipo=' + this.value
+    });
+</script>
+
+<!-- Aba de seleção para impressão de relatórios e declarações -->
+<script>
+    var aba = 1; // Valor inicial (pode ser ajustado se necessário)
+
+    function imprimirSelecao(imprimirTodos) {
+      const activeTab = document.querySelector('.nav-link.active'); // Seleciona a aba ativa
+      if (activeTab) {
+        aba = activeTab.id === 'nav-listagem-ficha' ? 1 : 2; // Define aba como 1 para deficiência ou 2 para declarações
+      }
+
+      if (aba === 1) {
+        imprimirRelatorio(imprimirTodos);
+      } else if (aba === 2) {
+        imprimirDeclaracao(imprimirTodos);
+      } else {
+
+      }
+    }
+</script>
+
+<!-- Impressão de Relatórios -->
+<script>
+    function imprimirRelatorio(imprimirTodos) {
+        let tipoRelatorio = Array.from(document.getElementsByName("radioTipoRelatorio")).find(r => r.checked).value;
+        if(imprimirTodos){
+            window.open("{% url 'SFP001:imprimirrelatorio' %}?radioTipoRelatorio=" + tipoRelatorio + "&servidores=all")
+        }
+        let servidores = []
+        servidores = $('#tableServidores').find('[type="checkbox"]:checked').map(function () {
+            if ($(this).attr("id") !== "selectall") {
+                return $(this).val();
+            }
+        }).get();
+
+        if (servidores.length > 0) {
+            window.open("{% url 'SFP001:imprimirrelatorio' %}?radioTipoRelatorio=" + tipoRelatorio + "&servidores=" + JSON.stringify(servidores), '_blank')
+        } else {
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Selecione ao menos 1 servidor',
+            })
+        }
+    }
+</script>
+
+<!-- Impressão de Declarações -->
+<script>
+    function imprimirDeclaracao(imprimirTodos) {
+        let tipoDeclaracao = Array.from(document.getElementsByName("selectTipoDeclaracao")).find(r => r.selected).value;
+        if(imprimirTodos){
+            window.open("{% url 'SFP001:imprimirdeclaracao' %}?selectTipoDeclaracao=" + tipoDeclaracao + "&servidores=all")
+        }
+        let servidores = []
+        servidores = $('#tableServidores').find('[type="checkbox"]:checked').map(function () {
+            if ($(this).attr("id") !== "selectall") {
+                return $(this).val();
+            }
+        }).get();
+
+        if (servidores.length > 0) {
+            window.open("{% url 'SFP001:imprimirdeclaracao' %}?selectTipoDeclaracao=" + tipoDeclaracao + "&servidores=" + JSON.stringify(servidores), '_blank')
+        } else {
+            Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                text: 'Selecione ao menos 1 servidor',
+            })
+        }
+    }
+</script>
+
+<script>
+    $(".js-example-responsive").select2({
+        width: 'resolve' // need to override the changed default
+    });
+</script>
+
+{% endblock %}

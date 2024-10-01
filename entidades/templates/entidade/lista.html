@@ -1,0 +1,75 @@
+{% extends 'base_listagem.html' %}
+{% block title %}Lista de entidade{% endblock %}
+{% block rota_cadastro %}{% url 'entidades:cadastro_entidade' %}{% endblock %}
+{% block titulo_pagina_listagem %}Entidade{% endblock %}
+{% block titulo_tabela %}Entidade{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a href="{% url 'home:Home' %}">Layout recad</a></li>
+        <li class="breadcrumb-item active">Lista de entidade</li>
+    </ol>
+{% endblock %}
+{% block nome %}Nova{% endblock %}
+{% block colunas %}
+    <th>Cód. entidade</th>
+    <th>CNPJ</th>
+    <th>Razao</th>
+    <th>Ativo</th>
+    <th></th>
+{% endblock %}
+{% block dados %}
+    {% for entidade in object_list %}
+        <tr>
+            <td>{{ entidade.codigo_entidade|upper }}</td>
+            <td data-mask="00.000.000/0000-00">{{ entidade.cnpj|upper }}</td>
+            <td>{{ entidade.razao|upper }}</td>
+
+            {% if entidade.entidade_ativo == True %}
+                <td><span class="badge label-table bg-success" style="font-size: 12px">SIM</span></td>
+            {% else %}
+                <td><span class="badge badge-danger" style="font-size: 10px">NÃO</span></td>
+            {% endif %}
+            <td>
+                <a href="{% url 'entidades:visualizar_entidade' entidade.id %}" class="action-icon"> <i
+                        class="mdi mdi-eye"></i></a>
+                <a href="{% url 'entidades:atualizar_entidade' entidade.id|safe %}" class="action-icon"> <i
+                        class="mdi mdi-square-edit-outline"></i></a>
+                <button style="background-color: transparent; border: none" class="action-icon"
+                        onclick="ConfirmExcluir('{{ entidade.id|safe }}','{{ entidade.razao }}')"><i
+                        class="mdi mdi-delete"></i></button>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+{% block script %}
+    <script>
+        function ConfirmExcluir(id, mensagem) {
+            Swal.fire({
+                title: 'Confirma Exclusão?',
+                text: 'Excluir registro : ' + mensagem,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, delete isso!',
+                cancelButtonText: 'Não, cancele!',
+                confirmButtonClass: 'btn btn-success mt-2',
+                cancelButtonClass: 'btn btn-danger ml-2 mt-2',
+                buttonsStyling: false
+            }).then(function (result) {
+                if (result.value) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/entidade/situacao/' + id,
+                        data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+                        success: function (data) {
+                            location.reload();
+                        }
+                    });
+                } else if (
+                    // Read more about handling dismissals
+                    result.dismiss === Swal.DismissReason.cancel
+                );
+            })
+            ;
+        }
+    </script>
+{% endblock %}

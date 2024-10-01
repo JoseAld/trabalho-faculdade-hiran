@@ -1,0 +1,30 @@
+{% extends 'base_cadastro.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Formulário de Pessoas{% endblock %}
+{% block titulo_pagina %}Pessoas{% endblock %}
+
+{% block breadcrumb %}
+
+<style>.app-menu {
+  max-height: 3500px;
+  min-height: 3000px;
+  --ct-leftbar-condensed-height: 3000px
+</style>
+
+<ol class="breadcrumb m-0">
+    <li class="breadcrumb-item"><a href="{% url 'home:Home' %}">Layout recad</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'SFP001:listagem_pessoa' %}">Lista de Pessoas</a></li>
+    <li class="breadcrumb-item active">Confirmação de Dados</li>
+</ol>
+{% endblock %}
+
+{% block form %}
+    {% include 'pessoa/confirmacao_form_pessoa.html' %}
+{% endblock %}
+
+{% block script %}
+  {{ block.super }}
+{% endblock %}
+

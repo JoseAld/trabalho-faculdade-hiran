@@ -1,0 +1,191 @@
+[
+  {
+    "model": "IBGE.uf",
+    "pk": 28,
+    "fields": {
+      "uf": "AC"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 29,
+    "fields": {
+      "uf": "AL"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 30,
+    "fields": {
+      "uf": "AM"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 31,
+    "fields": {
+      "uf": "AP"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 32,
+    "fields": {
+      "uf": "BA"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 33,
+    "fields": {
+      "uf": "CE"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 34,
+    "fields": {
+      "uf": "DF"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 35,
+    "fields": {
+      "uf": "ES"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 36,
+    "fields": {
+      "uf": "GO"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 37,
+    "fields": {
+      "uf": "MA"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 38,
+    "fields": {
+      "uf": "MG"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 39,
+    "fields": {
+      "uf": "MS"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 40,
+    "fields": {
+      "uf": "MT"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 41,
+    "fields": {
+      "uf": "PA"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 42,
+    "fields": {
+      "uf": "PB"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 43,
+    "fields": {
+      "uf": "PE"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 44,
+    "fields": {
+      "uf": "PI"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 45,
+    "fields": {
+      "uf": "PR"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 46,
+    "fields": {
+      "uf": "RJ"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 47,
+    "fields": {
+      "uf": "RN"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 48,
+    "fields": {
+      "uf": "RO"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 49,
+    "fields": {
+      "uf": "RR"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 50,
+    "fields": {
+      "uf": "RS"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 51,
+    "fields": {
+      "uf": "SC"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 52,
+    "fields": {
+      "uf": "SE"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 53,
+    "fields": {
+      "uf": "SP"
+    }
+  },
+  {
+    "model": "IBGE.uf",
+    "pk": 54,
+    "fields": {
+      "uf": "TO"
+    }
+  }
+]

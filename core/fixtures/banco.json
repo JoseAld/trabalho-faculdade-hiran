@@ -1,0 +1,1393 @@
+[
+  {
+    "model": "banco.bancos",
+    "pk": 1,
+    "fields": {
+      "codbanco": "260",
+      "banco": "NU PAGAMENTOS S.A                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 2,
+    "fields": {
+      "codbanco": "654",
+      "banco": "BANCO A.J.RENNER S.A.                        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 3,
+    "fields": {
+      "codbanco": "246",
+      "banco": "BANCO ABC BRASIL S.A.                        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 4,
+    "fields": {
+      "codbanco": "075",
+      "banco": "BANCO ABN AMRO S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 5,
+    "fields": {
+      "codbanco": "025",
+      "banco": "BANCO ALFA S.A.                              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 6,
+    "fields": {
+      "codbanco": "641",
+      "banco": "BANCO ALVORADA S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 7,
+    "fields": {
+      "codbanco": "213",
+      "banco": "BANCO ARBI S.A.                              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 8,
+    "fields": {
+      "codbanco": "019",
+      "banco": "BANCO AZTECA DO BRASIL S.A.                  "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 9,
+    "fields": {
+      "codbanco": "029",
+      "banco": "BANCO BANERJ S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 10,
+    "fields": {
+      "codbanco": "740",
+      "banco": "BANCO BARCLAYS S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 11,
+    "fields": {
+      "codbanco": "107",
+      "banco": "BANCO BBM S.A.                               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 12,
+    "fields": {
+      "codbanco": "031",
+      "banco": "BANCO BEG S.A.                               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 13,
+    "fields": {
+      "codbanco": "739",
+      "banco": "BANCO BGN S.A.                               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 14,
+    "fields": {
+      "codbanco": "096",
+      "banco": "BANCO BM&FBOVESPA DE SERVICOS DE LIQ E CUST  "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 15,
+    "fields": {
+      "codbanco": "318",
+      "banco": "BANCO BMG S.A.                               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 16,
+    "fields": {
+      "codbanco": "752",
+      "banco": "BANCO BNP PARIBAS BRASIL S.A.                "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 17,
+    "fields": {
+      "codbanco": "248",
+      "banco": "BANCO BOAVISTA INTERATLANTICO S.A.           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 18,
+    "fields": {
+      "codbanco": "218",
+      "banco": "BANCO BONSUCESSO S.A.                        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 19,
+    "fields": {
+      "codbanco": "065",
+      "banco": "BANCO BRACCE S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 20,
+    "fields": {
+      "codbanco": "036",
+      "banco": "BANCO BRADESCO BBI S.A.                      "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 21,
+    "fields": {
+      "codbanco": "204",
+      "banco": "BANCO BRADESCO CARTOES S.A.                  "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 22,
+    "fields": {
+      "codbanco": "237",
+      "banco": "BANCO BRADESCO S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 23,
+    "fields": {
+      "codbanco": "225",
+      "banco": "BANCO BRASCAN S.A.                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 24,
+    "fields": {
+      "codbanco": "208",
+      "banco": "BANCO BTG PACTUAL S.A.                       "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 25,
+    "fields": {
+      "codbanco": "044",
+      "banco": "BANCO BVA S.A.                               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 26,
+    "fields": {
+      "codbanco": "263",
+      "banco": "BANCO CACIQUE S.A.                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 27,
+    "fields": {
+      "codbanco": "473",
+      "banco": "BANCO CAIXA GERAL - BRASIL S.A.              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 28,
+    "fields": {
+      "codbanco": "412",
+      "banco": "BANCO CAPITAL S.A.                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 29,
+    "fields": {
+      "codbanco": "040",
+      "banco": "BANCO CARGILL S.A.                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 30,
+    "fields": {
+      "codbanco": "266",
+      "banco": "BANCO CEDULA S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 31,
+    "fields": {
+      "codbanco": "233",
+      "banco": "BANCO CIFRA S.A.                             "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 32,
+    "fields": {
+      "codbanco": "745",
+      "banco": "BANCO CITIBANK S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 33,
+    "fields": {
+      "codbanco": "241",
+      "banco": "BANCO CLASSICO S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 34,
+    "fields": {
+      "codbanco": "215",
+      "banco": "BANCO COMERCIAL E INVESTIMENTO SUDAMERIS S.A "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 35,
+    "fields": {
+      "codbanco": "095",
+      "banco": "BANCO CONFIDENCE DE CAMBIO S.A.              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 36,
+    "fields": {
+      "codbanco": "756",
+      "banco": "BANCO COOPERATIVO DO BRASIL S.A. - BANCOOB   "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 37,
+    "fields": {
+      "codbanco": "748",
+      "banco": "BANCO COOPERATIVO SICREDI S.A.               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 38,
+    "fields": {
+      "codbanco": "721",
+      "banco": "BANCO CREDIBEL S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 39,
+    "fields": {
+      "codbanco": "222",
+      "banco": "BANCO CREDIT AGRICOLE BRASIL S.A.            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 40,
+    "fields": {
+      "codbanco": "505",
+      "banco": "BANCO CREDIT SUISSE (BRASIL) S.A.            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 41,
+    "fields": {
+      "codbanco": "229",
+      "banco": "BANCO CRUZEIRO DO SUL S.A.                   "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 42,
+    "fields": {
+      "codbanco": "003",
+      "banco": "BANCO DA AMAZONIA S.A.                       "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 43,
+    "fields": {
+      "codbanco": "707",
+      "banco": "BANCO DAYCOVAL S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 44,
+    "fields": {
+      "codbanco": "300",
+      "banco": "BANCO DE LA NACION ARGENTINA                 "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 45,
+    "fields": {
+      "codbanco": "495",
+      "banco": "BANCO DE LA PROVINCIA DE BUENOS AIRE         "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 46,
+    "fields": {
+      "codbanco": "494",
+      "banco": "BANCO DE LA REPUBLICA ORIENTAL DEL URUGUAY   "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 47,
+    "fields": {
+      "codbanco": "024",
+      "banco": "BANCO DE PERNAMBUCO S.A. - BANDEPE           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 48,
+    "fields": {
+      "codbanco": "456",
+      "banco": "BANCO DE TOKYO-MITSUBISHI UFJ BRASIL S.A     "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 49,
+    "fields": {
+      "codbanco": "214",
+      "banco": "BANCO DIBENS S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 50,
+    "fields": {
+      "codbanco": "001",
+      "banco": "BANCO DO BRASIL S.A.                         "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 51,
+    "fields": {
+      "codbanco": "047",
+      "banco": "BANCO DO ESTADO DE SERGIPE S.A.              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 52,
+    "fields": {
+      "codbanco": "037",
+      "banco": "BANCO DO ESTADO DO PARA S.A.                 "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 53,
+    "fields": {
+      "codbanco": "039",
+      "banco": "BANCO DO ESTADO DO PIAUI S.A. - BEP          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 54,
+    "fields": {
+      "codbanco": "041",
+      "banco": "BANCO DO ESTADO DO RIO GRANDE DO SUL S.A     "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 55,
+    "fields": {
+      "codbanco": "004",
+      "banco": "BANCO DO NORDESTE DO BRASIL S.A.             "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 56,
+    "fields": {
+      "codbanco": "265",
+      "banco": "BANCO FATOR S.A.                             "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 57,
+    "fields": {
+      "codbanco": "224",
+      "banco": "BANCO FIBRA S.A.                             "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 58,
+    "fields": {
+      "codbanco": "626",
+      "banco": "BANCO FICSA S.A.                             "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 59,
+    "fields": {
+      "codbanco": "394",
+      "banco": "BANCO FINASA BMC S.A.                        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 60,
+    "fields": {
+      "codbanco": "734",
+      "banco": "BANCO GERDAU S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 61,
+    "fields": {
+      "codbanco": "612",
+      "banco": "BANCO GUANABARA S.A.                         "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 62,
+    "fields": {
+      "codbanco": "063",
+      "banco": "BANCO IBI S.A. BANCO MULTIPLO                "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 63,
+    "fields": {
+      "codbanco": "604",
+      "banco": "BANCO INDUSTRIAL DO BRASIL S.A.              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 64,
+    "fields": {
+      "codbanco": "320",
+      "banco": "BANCO INDUSTRIAL E COMERCIAL S.A.            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 65,
+    "fields": {
+      "codbanco": "653",
+      "banco": "BANCO INDUSVAL S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 66,
+    "fields": {
+      "codbanco": "630",
+      "banco": "BANCO INTERCAP S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 67,
+    "fields": {
+      "codbanco": "249",
+      "banco": "BANCO INVESTCRED UNIBANCO S.A.               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 68,
+    "fields": {
+      "codbanco": "184",
+      "banco": "BANCO ITAU BBA S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 69,
+    "fields": {
+      "codbanco": "479",
+      "banco": "BANCO ITAUBANK S.A                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 70,
+    "fields": {
+      "codbanco": "376",
+      "banco": "BANCO J. P. MORGAN S.A.                      "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 71,
+    "fields": {
+      "codbanco": "074",
+      "banco": "BANCO J. SAFRA S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 72,
+    "fields": {
+      "codbanco": "217",
+      "banco": "BANCO JOHN DEERE S.A.                        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 73,
+    "fields": {
+      "codbanco": "076",
+      "banco": "BANCO KDB S.A.                               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 74,
+    "fields": {
+      "codbanco": "757",
+      "banco": "BANCO KEB DO BRASIL S.A.                     "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 75,
+    "fields": {
+      "codbanco": "600",
+      "banco": "BANCO LUSO BRASILEIRO S.A.                   "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 76,
+    "fields": {
+      "codbanco": "243",
+      "banco": "BANCO MAXIMA S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 77,
+    "fields": {
+      "codbanco": "389",
+      "banco": "BANCO MERCANTIL DO BRASIL S.A.               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 78,
+    "fields": {
+      "codbanco": "370",
+      "banco": "BANCO MIZUHO DO BRASIL S.A.                  "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 79,
+    "fields": {
+      "codbanco": "746",
+      "banco": "BANCO MODAL S.A.                             "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 80,
+    "fields": {
+      "codbanco": "738",
+      "banco": "BANCO MORADA S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 81,
+    "fields": {
+      "codbanco": "066",
+      "banco": "BANCO MORGAN STANLEY S.A.                    "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 82,
+    "fields": {
+      "codbanco": "045",
+      "banco": "BANCO OPPORTUNITY S.A.                       "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 83,
+    "fields": {
+      "codbanco": "079",
+      "banco": "BANCO ORIGINAL DO AGRONEGOCIO S.A.           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 84,
+    "fields": {
+      "codbanco": "212",
+      "banco": "BANCO ORIGINAL S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 85,
+    "fields": {
+      "codbanco": "623",
+      "banco": "BANCO PANAMERICANO S.A.                      "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 86,
+    "fields": {
+      "codbanco": "611",
+      "banco": "BANCO PAULISTA S.A.                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 87,
+    "fields": {
+      "codbanco": "613",
+      "banco": "BANCO PECUNIA S.A.                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 88,
+    "fields": {
+      "codbanco": "643",
+      "banco": "BANCO PINE S.A.                              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 89,
+    "fields": {
+      "codbanco": "724",
+      "banco": "BANCO PORTO SEGURO S.A.                      "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 90,
+    "fields": {
+      "codbanco": "735",
+      "banco": "BANCO POTTENCIAL S.A.                        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 91,
+    "fields": {
+      "codbanco": "638",
+      "banco": "BANCO PROSPER S.A.                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 92,
+    "fields": {
+      "codbanco": "747",
+      "banco": "BANCO RABOBANK INTERNATIONAL BRASIL S.A      "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 93,
+    "fields": {
+      "codbanco": "356",
+      "banco": "BANCO REAL S.A.                              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 94,
+    "fields": {
+      "codbanco": "633",
+      "banco": "BANCO RENDIMENTO S.A.                        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 95,
+    "fields": {
+      "codbanco": "741",
+      "banco": "BANCO RIBEIRAO PRETO S.A.                    "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 96,
+    "fields": {
+      "codbanco": "072",
+      "banco": "BANCO RURAL MAIS S.A.                        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 97,
+    "fields": {
+      "codbanco": "453",
+      "banco": "BANCO RURAL S.A.                             "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 98,
+    "fields": {
+      "codbanco": "422",
+      "banco": "BANCO SAFRA S.A.                             "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 99,
+    "fields": {
+      "codbanco": "033",
+      "banco": "BANCO SANTANDER (BRASIL) S.A.                "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 100,
+    "fields": {
+      "codbanco": "743",
+      "banco": "BANCO SEMEAR S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 101,
+    "fields": {
+      "codbanco": "749",
+      "banco": "BANCO SIMPLES S.A.                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 102,
+    "fields": {
+      "codbanco": "366",
+      "banco": "BANCO SOCIETE GENERALE BRASIL S.A.           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 103,
+    "fields": {
+      "codbanco": "637",
+      "banco": "BANCO SOFISA S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 104,
+    "fields": {
+      "codbanco": "012",
+      "banco": "BANCO STANDARD DE INVESTIMENTOS S.A.         "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 105,
+    "fields": {
+      "codbanco": "464",
+      "banco": "BANCO SUMITOMO MITSUI BRASILEIRO S.A         "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 106,
+    "fields": {
+      "codbanco": "634",
+      "banco": "BANCO TRIANGULO S.A.                         "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 107,
+    "fields": {
+      "codbanco": "018",
+      "banco": "BANCO TRICURY S.A.                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 108,
+    "fields": {
+      "codbanco": "655",
+      "banco": "BANCO VOTORANTIM S.A.                        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 109,
+    "fields": {
+      "codbanco": "610",
+      "banco": "BANCO VR S.A.                                "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 110,
+    "fields": {
+      "codbanco": "119",
+      "banco": "BANCO WESTERN UNION DO BRASIL S.A.           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 111,
+    "fields": {
+      "codbanco": "021",
+      "banco": "BANESTES S.A. BANCO DO ESTADO DO ESP. SANTO  "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 112,
+    "fields": {
+      "codbanco": "719",
+      "banco": "BANIF-BANCO INTERNACIONAL DO FUNCHAL(BRASIL) "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 113,
+    "fields": {
+      "codbanco": "755",
+      "banco": "BANK OF AMERICA MERRILL LYNCH BANCO MULT. S.A"
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 114,
+    "fields": {
+      "codbanco": "744",
+      "banco": "BANKBOSTON N.A.                              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 115,
+    "fields": {
+      "codbanco": "073",
+      "banco": "BB BANCO POPULAR DO BRASIL S.A.              "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 116,
+    "fields": {
+      "codbanco": "250",
+      "banco": "BCV - BANCO DE CREDITO E VAREJO S.A.         "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 117,
+    "fields": {
+      "codbanco": "078",
+      "banco": "BES INVEST.DO BRASIL S.A.-BANCO INVEST BMW   "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 118,
+    "fields": {
+      "codbanco": "069",
+      "banco": "BPN BRASIL BANCO MULTIPLO S.A.               "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 119,
+    "fields": {
+      "codbanco": "125",
+      "banco": "BRASIL PLURAL S.A. - BANCO MULTIPLO          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 120,
+    "fields": {
+      "codbanco": "070",
+      "banco": "BRB - BANCO DE BRASILIA S.A.                 "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 121,
+    "fields": {
+      "codbanco": "104",
+      "banco": "CAIXA ECONOMICA FEDERAL                      "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 122,
+    "fields": {
+      "codbanco": "477",
+      "banco": "CITIBANK S.A.                                "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 123,
+    "fields": {
+      "codbanco": "487",
+      "banco": "DEUTSCHE BANK S.A. - BANCO ALEMAO            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 124,
+    "fields": {
+      "codbanco": "064",
+      "banco": "GOLDMAN SACHS DO BRASIL BANCO MULTIPLO S.A   "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 125,
+    "fields": {
+      "codbanco": "062",
+      "banco": "HIPERCARD BANCO MULTIPLO S.A.                "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 126,
+    "fields": {
+      "codbanco": "399",
+      "banco": "HSBC BANK BRASIL S.A. - BANCO MULTIPLO       "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 127,
+    "fields": {
+      "codbanco": "168",
+      "banco": "HSBC FINANCE (BRASIL) S.A. - BANCO MULTIPLO  "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 128,
+    "fields": {
+      "codbanco": "492",
+      "banco": "ING BANK N.V.                                "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 129,
+    "fields": {
+      "codbanco": "652",
+      "banco": "ITAU UNIBANCO HOLDING S.A.                   "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 130,
+    "fields": {
+      "codbanco": "341",
+      "banco": "ITAU UNIBANCO S.A.                           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 131,
+    "fields": {
+      "codbanco": "488",
+      "banco": "JPMORGAN CHASE BANK                          "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 132,
+    "fields": {
+      "codbanco": "014",
+      "banco": "NATIXIS BRASIL S.A. BANCO MULTIPLO           "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 133,
+    "fields": {
+      "codbanco": "753",
+      "banco": "NBC BANK BRASIL S.A. - BANCO MULTIPLO        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 134,
+    "fields": {
+      "codbanco": "254",
+      "banco": "PARANA BANCO S.A.                            "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 135,
+    "fields": {
+      "codbanco": "751",
+      "banco": "SCOTIABANK BRASIL S.A. BANCO MULTIPLO        "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 136,
+    "fields": {
+      "codbanco": "409",
+      "banco": "UNIBANCO - UNIAO DE BANCOS BRASILEIROS S.A   "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 137,
+    "fields": {
+      "codbanco": "230",
+      "banco": "UNICARD BANCO MULTIPLO S.A.                  "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 138,
+    "fields": {
+      "codbanco": "084",
+      "banco": "UNICRED NORTE DO PARANA                      "
+    }
+  },
+  {
+    "model": "banco.bancos",
+    "pk": 139,
+    "fields": {
+      "codbanco": "000",
+      "banco": "SEM BANCO                                    "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 24,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "999",
+      "descricao": "Conta NSGD                                   "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 25,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "007",
+      "descricao": "Conta Salário                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 26,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "000",
+      "descricao": "Conta Corrente                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 27,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "010",
+      "descricao": "Poupanca Ouro                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 28,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "020",
+      "descricao": "Poupanca Ouro Salario                        "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 29,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "510",
+      "descricao": "Nova Poupanca Ouro                           "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 30,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "520",
+      "descricao": "Nova Poupanca Ouro Salario                   "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 31,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "910",
+      "descricao": "Poupanca Poupex                              "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 32,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "920",
+      "descricao": "Poupanca Poupex Salario                      "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 33,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "960",
+      "descricao": "Nova Poupanca Poupex                         "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 34,
+    "fields": {
+      "codbanco": 50,
+      "tipoconta": "970",
+      "descricao": "Nova Poupanca Poupex Salario                 "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 35,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "000",
+      "descricao": "Conta Corrente                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 36,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "001",
+      "descricao": "Conta Corrente de Pessoa Fisica              "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 37,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "002",
+      "descricao": "Conta Simples de Pessoa Fisica               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 38,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "003",
+      "descricao": "Conta Corrente de Pessoa Juridica            "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 39,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "006",
+      "descricao": "Entidades Publicas                           "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 40,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "007",
+      "descricao": "Depositos Instituicoes Financeiras           "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 41,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "013",
+      "descricao": "Poupanca de Pessoa Fisica                    "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 42,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "022",
+      "descricao": "Poupanca de Pessoa Juridica                  "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 43,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "023",
+      "descricao": "Conta Caixa Facil                            "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 44,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "028",
+      "descricao": "Poupanca de Credito Imobiliario              "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 45,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "037",
+      "descricao": "Conta Salario                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 46,
+    "fields": {
+      "codbanco": 121,
+      "tipoconta": "043",
+      "descricao": "Depositos Lotericos                          "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 47,
+    "fields": {
+      "codbanco": 22,
+      "tipoconta": "000",
+      "descricao": "Conta Corrente                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 48,
+    "fields": {
+      "codbanco": 22,
+      "tipoconta": "380",
+      "descricao": "Conta Salario                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 49,
+    "fields": {
+      "codbanco": 22,
+      "tipoconta": "510",
+      "descricao": "Conta Poupanca                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 50,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "000",
+      "descricao": "Nao Informado                                "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 51,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "001",
+      "descricao": "Conta Corrente                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 52,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "002",
+      "descricao": "Conta Poupanca                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 53,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "003",
+      "descricao": "Cartao Salario                               "
+    }
+  },
+  {
+    "model": "banco.tipoconta",
+    "pk": 54,
+    "fields": {
+      "codbanco": 52,
+      "tipoconta": "004",
+      "descricao": "DOC                                          "
+    }
+  }
+]

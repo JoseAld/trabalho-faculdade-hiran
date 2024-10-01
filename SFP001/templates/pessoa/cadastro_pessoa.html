@@ -1,0 +1,818 @@
+{% extends 'base_cadastro.html' %}
+{% load static %}
+
+{% block css_complementar %}
+<link rel="stylesheet" href="{% static 'js/darkroomjs-master/build/darkroom.css' %}">
+{% endblock %}
+
+{% block title %} Formulário de Pessoas{% endblock %}
+{% block titulo_pagina %}Pessoas{% endblock %}
+{% block breadcrumb %}
+    <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a href="{% url 'home:Home' %}">Layout recad</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'SFP001:listagem_pessoa' %}">Lista de Pessoas</a></li>
+        <li class="breadcrumb-item active">Formulário de cadastro</li>
+    </ol>
+{% endblock %}
+
+{% block form %}
+    {% include 'pessoa/form_pessoa.html' %}
+{% endblock %}
+
+{% block script %}
+    {{ block.super }}
+
+    <!-- DarkroomJS -->
+    <script src="{% static 'js/darkroomjs-master/demo/vendor/fabric.js' %}"></script>
+    <script src="{% static 'js/darkroomjs-master/build/darkroom.js' %}"></script>
+    <script src="{% static 'js/darkroomjs-master/lib/js/plugins/darkroom.crop.js' %}"></script>
+
+    <script>
+        var acesso_camara = function () {
+            document.querySelector('#button-camera').style.display = 'none';
+            navigator.mediaDevices.getUserMedia({video: true})
+                .then(function (mediaStream) {
+                    var video = document.querySelector('#video-teste');
+                    document.querySelector('#video-teste-container').style.display = '';
+                    video.srcObject = mediaStream;
+                    video.play();
+                })
+                .catch(function (err) {
+                    document.querySelector('#video-mensagem-erro').innerText =
+                        'Não há permissões para acessar a webcam';
+                })
+        }
+
+        <!-- Acesso a câmera -->
+        document.querySelector('#button-camera').addEventListener('click', function () {
+            acesso_camara();
+        });
+    </script>
+
+    <!-- Montando o modal após encerrado -->
+    <script>
+        $(document).on('show.bs.modal', '.modal', function (event) {
+            $('#modalbody').html("<div class='col-md-12' style='margin-top: 10px;' id='video-teste-container'>" +
+                "<div class='row'>" +
+                "        <div class='col-md-6 col-xl-6'>" +
+                "            <video id='video-teste' style='max-width: 100%'></video>" +
+                "        </div>" +
+                "        <div class='col-md-6 col-xl-6' id='conteudo-image' style='max-width: 100%;'>" +
+                "            <canvas id='canvas-teste' style='max-width: 100%; display: none;'" +
+                "                    draggable='false'></canvas>" +
+                "        </div>" +
+                "    </div>" +
+                "</div>");
+            acesso_camara();
+        });
+    </script>
+
+    <!-- Captura da imagem -->
+    <script>
+        let fileStorageLocation = 'none';
+
+        document.querySelector('#button-camera-capturar').addEventListener('click', function (e) {
+            let conteudo = document.getElementById('conteudo-image');
+            let canvas = document.querySelector("#canvas-teste");
+            let video = document.querySelector('#video-teste');
+            let botao = document.getElementById('button-camera-capturar');
+            botao.disabled=true;
+            canvas.height = video.videoHeight;
+            canvas.width = video.videoWidth;
+            let context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0)
+            let target = new Image()
+            target.src = canvas.toDataURL();
+            target.id = 'image'
+            conteudo.appendChild(target);
+
+            <!-- Edição da imagem -->
+            let drkm = new Darkroom('#image', {
+                // Canvas initialization size
+                minWidth: 100,
+                minHeight: 100,
+                maxWidth: 360,
+                maxHeight: 360,
+                ratio: 4/3,
+
+                // Plugins options
+                plugins: {
+                    crop: {
+                        quickCropKey: 67,
+                        ratio: 2 / 3,
+                    },
+                    <!-- Save da imagem -->
+                    save: {
+                        callback: function () {
+                            this.darkroom.selfDestroy(); // Cleanup
+                            let newImage = drkm.canvas.toDataURL();
+                            fileStorageLocation = newImage;
+                            $("#modal-foto").modal('hide');
+                            $('#id_foto_webcam').attr('src', fileStorageLocation).show();
+                            $('#id_foto_uri').val(fileStorageLocation);
+                            $("#icon_foto").css("display", "none")
+
+                            // Obtém o elemento da webcam
+                            const webcam = document.querySelector("video");
+
+                            // Fecha a webcam
+                            webcam.pause();
+                            webcam.src = "";
+                            webcam.style.display = "none";
+                        }
+                    }
+                },
+
+                // Post initialization method
+                initialize: function () {
+                    // Active crop selection
+                    this.plugins['crop'].requireFocus();
+
+                    // Add custom listener
+                    this.addEventListener('core:transformation', function () { /* ... */
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!--limpa imagem capturada-->
+     <script>
+        document.querySelector('#button-camera-limpar').addEventListener('click', function (e) {
+            let conteudo = document.getElementById('conteudo-image');
+            let botao = document.getElementById('button-camera-capturar');
+            conteudo.innerHTML = '<canvas id="canvas-teste" style="max-width: 100%; display: none;" draggable="false"></canvas>';
+            botao.disabled=false;
+        });
+     </script>
+
+    <!-- Seleção da imagem -->
+    <script>
+        document.getElementById('select-image').onclick = function () {
+            document.getElementById('id_foto').click()
+        }
+    </script>
+
+    <!-- Exibição da imagem -->
+    <script>
+        $(document).ready(function () {
+            $('#id_foto').on('change', function (e) {
+                let foto = e.target.files[0];
+                let reader = new FileReader();
+                let preview = $('#id_foto_webcam');
+                reader.onloadend = function () {
+                    $("#icon_foto").css("display", "none");
+                    preview.attr('src', reader.result).show();
+                }
+                if (foto) {
+                    reader.readAsDataURL(foto);
+                } else {
+                    preview.attr('src', "")
+                }
+            })
+        })
+    </script>
+
+    <!-- Pesquisa do CEP -->
+    <script>
+        $('#id_cep').on("input", function (e) {
+            let data = e.target.value;
+            if (data.length !== 8) return false
+            $.ajax({
+                url: '/ibge/bairros/',
+                data: {
+                    search: data
+                },
+                method: 'GET'
+            }).done(function (data) {
+                $('#id_bairro').val(data['bairro']);
+                $('#id_endereco').val(data['end']);
+                let option = $('#id_uf option:contains(' + data['uf'] + ')');
+                if (option.length > 0) {
+                   $('#id_uf').val(option[0]['value']).trigger('change');
+                   }
+                $.ajax({
+                      url: 'http://127.0.0.1:8000/ibge/cidades/?id='+option[0]['value']+'&search=' + data['cidade'],
+                      type: 'GET',
+                      success: function(data, status, xhr) {
+                        var newOption = new Option(data[0].text, data[0].id, true, true);
+                        $('#id_cidade').append(newOption).trigger('change');
+                      }
+                    });
+            });
+        });
+    </script>
+
+    <!-- Pesquisa do Cidade -->
+    <script>
+        $('#id_uf').on('change', function (e) {
+            let data = e.target.value;
+            $('#id_cidade').select2().empty();
+            $('#id_cidade').select2({
+                ajax: {
+                    delay: 250,
+                    url: '/ibge/cidades/?id=' + data,
+                    data: function (params) {
+                        let query = {
+                            search: params.term,
+                            type: 'public'
+                        }
+                        // Query parameters will be ?search=[term]&type=public
+                        return query;
+                    },
+                    processResults: function (data) {
+                        // Transforms the top-level key of the response object from 'items' to 'results'
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+
+   <!-- Pesquisa do Cidade de Nascimento -->
+    <script>
+        $('#id_ufnasc').on('select2:select', function (e) {
+            var data = e.target.value;
+            $('#id_cidnasc').select2().empty();
+            $('#id_cidnasc').select2({
+                ajax: {
+                    delay: 250,
+                    url: '/ibge/cidades/?id=' + data,
+                    data: function (params) {
+                        var query = {
+                            search: params.term,
+                            type: 'public'
+                        }
+                        // Query parameters will be ?search=[term]&type=public
+                        return query;
+                    },
+                    processResults: function (data) {
+                        // Transforms the top-level key of the response object from 'items' to 'results'
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Pesquisa do Tipo Conta -->
+    <script>
+        $('#id_banco').on('change', function (e) {
+            console.log(e)
+            let data = e.target.value;
+            $('#id_tipoconta').select2().empty();
+            $('#id_tipoconta').select2({
+                ajax: {
+                    delay: 250,
+                    url: '/banco/tipoconta/?id=' + data,
+                    data: function (params) {
+                        let query = {
+                            search: params.term,
+                            type: 'public'
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Pesquisa do Vinculo -->
+    <script>
+        $(document).ready(function () {
+            $('#id_sistema').select2({
+                minimumInputLength: 2,
+                width: '100%',
+                ajax: {
+                    delay: 250,
+                    url: '{% url 'listagem_vinculos' %}',
+                    data: function (params) {
+                        let query = {
+                            search: params.term,
+                            entidade_id: {{ entidade.id }},
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+        })
+    </script>
+
+    <!-- Pesquisa Cargos -->
+    <script>
+        $(document).ready(function () {
+            $('#id_funcao').select2({
+                minimumInputLength: 3,
+                width: '100%',
+                ajax: {
+                        delay: 250,
+                        url: '{% url 'listagem_cargos' %}',
+                        data: function (params) {
+                            let query = {
+                                search: params.term,
+                                entidade_id: {{ entidade.id }},
+                            }
+                            return query;
+                        },
+                        processResults: function (data) {
+                            return {
+                                results: data
+                            };
+                        }
+                }
+            });
+        })
+    </script>
+
+    <!-- Pesquisa Cargos 2 -->
+    <script>
+        $(document).ready(function () {
+            $('#id_funcao2').select2({
+                minimumInputLength: 3,
+                width: '100%',
+                ajax: {
+                    delay: 250,
+                    url: '{% url 'listagem_cargos' %}',
+                    data: function (params) {
+                        let query = {
+                            search: params.term,
+                            entidade_id: {{ entidade.id }},
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+        })
+    </script>
+
+    <!-- Pesquisa Secretarias -->
+    <script>
+        $(document).ready(function () {
+            $('#id_cdsecreta').select2({
+                minimumInputLength: 3,
+                width: '100%',
+                ajax: {
+                    delay: 250,
+                    url: '{% url 'listagem_secretarias' %}',
+                    data: function (params) {
+                        let query = {
+                            search: params.term,
+                            entidade_id: {{ entidade.id }},
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+        })
+    </script>
+
+    <!-- Pesquisa Setores -->
+    <script>
+        $(document).ready(function () {
+            $('#id_cdsetor').select2({
+                minimumInputLength: 3,
+                width: '100%',
+                ajax: {
+                    delay: 250,
+                    url: '{% url 'listagem_setores' %}',
+                    data: function (params) {
+                        let query = {
+                            search: params.term,
+                            entidade_id: {{ entidade.id }},
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+        })
+    </script>
+
+    <!-- Pesquisa Secretarias Origem -->
+    <script>
+        $(document).ready(function () {
+            $('#id_cdsecretaorigem').select2({
+                minimumInputLength: 3,
+                width: '100%',
+                ajax: {
+                    delay: 250,
+                    url: '{% url 'listagem_secretarias' %}',
+                    data: function (params) {
+                        let query = {
+                            search: params.term,
+                            entidade_id: {{ entidade.id }},
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+        })
+    </script>
+
+    <!-- Pesquisa Setores Origem -->
+    <script>
+        $(document).ready(function () {
+            $('#id_cdsetororigem').select2({
+                minimumInputLength: 3,
+                width: '100%',
+                ajax: {
+                    delay: 250,
+                    url: '{% url 'listagem_setores' %}',
+                    data: function (params) {
+                        let query = {
+                            search: params.term,
+                            entidade_id: {{ entidade.id }},
+                        }
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    }
+                }
+            });
+        })
+    </script>
+
+    <!-- Formsets -->
+    <script type="text/html" id="item-dependetesfrm">
+        <div id="item-__prefix__" class="form-group">
+            <div class="col-md-12 p-0">
+                <fieldset class="fieldset-border-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-2">
+                                <label for="_id_nomedep"
+                                       class="col-form-label  requiredField">
+                                    Nome do Dependente
+                                </label>
+                                {{ formsetdepen.empty_form.nomedep }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group mb-2">
+                                <label for="cpf_dependente"
+                                       class="col-form-label  requiredField">
+                                    CPF
+                                </label>
+                                {{ formsetdepen.empty_form.cpf_dependente }}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group mb-2">
+                                <label for="id_identdepend"
+                                       class="col-form-label  requiredField">
+                                    RG
+                                </label>
+                                {{ formsetdepen.empty_form.identdepend }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group mb-2">
+                                <label for="id_dependente"
+                                       class="col-form-label  requiredField">
+                                    Sexo
+                                </label>
+                                {{ formsetdepen.empty_form.sexo }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group mb-2">
+                                <label for="id_dependente"
+                                       class="col-form-label  requiredField">
+                                    Data de Nascimento
+                                </label>
+                                {{ formsetdepen.empty_form.nascdep }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group mb-2">
+                                <label for="id_dependente"
+                                       class="col-form-label  requiredField">
+                                    Parentesco
+                                </label>
+                                {{ formsetdepen.empty_form.parent }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group mb-2">
+                                <label for="cpf_dependente"
+                                       class="col-form-label  requiredField">
+                                    Núm. SUS
+                                </label>
+                                {{ formsetdepen.empty_form.sus_numcartdep }}
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group mb-2">
+                                <label for="cpf_dependente"
+                                       class="col-form-label  requiredField">
+                                    Data de emissão
+                                </label>
+                                {{ formsetdepen.empty_form.sus_dtemissaodep }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group mt-2">
+                                <div class="checkbox checkbox-success checkbox-circle">
+                                    {{ formsetdepen.empty_form.depir }}
+                                    <label for="id_jacotribregime">
+                                        Dependente para Imposto de Renda
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group mt-2">
+                                <div class="checkbox checkbox-success checkbox-circle">
+                                    {{ formsetdepen.empty_form.depsf }}
+                                    <label for="id_jacotribregime">
+                                        Dependente para Salário Familía
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mt-2">
+                                <div class="checkbox checkbox-success checkbox-circle">
+                                    {{ formsetdepen.empty_form.incap_fisica }}
+                                    <label for="id_jacotribregime">
+                                        Tem incapacidade física ou mental para o trabalho
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group mt-2">
+                                <div>
+                                    {{ formsetdepen.empty_form.DELETE }}
+                                    <label>
+                                        Excluir
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#add-item-depen").click(function (ev) {
+                ev.preventDefault();
+                let count = $('#depenfrm').children().length;
+                let tmplMarkup = $("#item-dependetesfrm").html();
+                let compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
+                $("div#depenfrm").append(compiledTmpl);
+
+                // update form count
+                $('#id_dependentes_set-TOTAL_FORMS').attr('value', count + 1);
+
+                // some animate to scroll to view our new form
+                $('html, body').animate({
+                    scrollTop: $("#add-item-depen").position().top - 200
+                }, 800);
+            });
+        });
+    </script>
+
+    <script type="text/html" id="item-cursofrm">
+        <div id="item-__prefix__">
+            <fieldset class="fieldset-border-form">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group mb-2">
+                            <label for="id_nivel"
+                                   class="col-form-label  requiredField">
+                                Nivel
+                            </label>
+                            {{ formset.empty_form.nivel }}
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group mb-2">
+                            <label for="id_nomecurso"
+                                   class="col-form-label  requiredField">
+                                Nome do Curso
+                            </label>
+                            {{ formset.empty_form.nomecurso }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group mb-2">
+                            <label for="id_nivel"
+                                   class="col-form-label  requiredField">
+                                Instituição
+                            </label>
+                            {{ formset.empty_form.instituicao }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group mb-2">
+                            <label for="_id_nomedep"
+                                   class="col-form-label  requiredField">
+                                Carga horária
+                            </label>
+                            {{ formset.empty_form.carghora }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group mb-2">
+                            <label for="_id_nomedep"
+                                   class="col-form-label  requiredField">
+                                Ano Base
+                            </label>
+                            {{ formset.empty_form.anobase }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group mb-2">
+                            <label for="_id_nomedep"
+                                   class="col-form-label  requiredField">
+                                Data de inicio
+                            </label>
+                            {{ formset.empty_form.dtiniciocurso }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group mb-2">
+                            <label for="_id_nomedep"
+                                   class="col-form-label  requiredField">
+                                Data de conclusão
+                            </label>
+                            {{ formset.empty_form.dtfimcurso }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group mt-2">
+                            <div style="float: right">
+                                {{ formset.empty_form.DELETE }}
+                                <label>
+                                    Excluir
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#add-item").click(function (ev) {
+                ev.preventDefault();
+                let count = $('#cursofrm').children().length;
+                let tmplMarkup = $("#item-cursofrm").html();
+                let compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
+                $("div#cursofrm").append(compiledTmpl);
+
+                // update form count
+                $('#id_product-TOTAL_FORMS').attr('value', count + 1);
+
+                // some animate to scroll to view our new form
+                $('html, body').animate({
+                    scrollTop: $("#add-item").position().top - 200
+                }, 800);
+            });
+        });
+    </script>
+
+    <script type="text/html" id="item-afastamentosfrm">
+        <div id="item-__prefix__">
+            <fieldset class="fieldset-border-form">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group mb-2">
+                            <label for="id_nivel"
+                                   class="col-form-label  requiredField">
+                                Ano Base
+                            </label>
+                            {{ formsetafast.empty_form.anobase }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group mb-2">
+                            <label for="id_nomecurso"
+                                   class="col-form-label  requiredField">
+                                Tipo de Afastamento
+                            </label>
+                            {{ formsetafast.empty_form.codfol }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group mb-2">
+                            <label for="id_nomecurso"
+                                   class="col-form-label  requiredField">
+                                Inicio
+                            </label>
+                            {{ formsetafast.empty_form.dtinicioafst }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group mb-2">
+                            <label for="id_nomecurso"
+                                   class="col-form-label  requiredField">
+                                Fim
+                            </label>
+                            {{ formsetafast.empty_form.dtfimafst }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group mb-2">
+                            <label for="id_nivel"
+                                   class="col-form-label  requiredField">
+                                Observação
+                            </label>
+                            {{ formsetafast.empty_form.obsafst }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group mt-2">
+                            <div style="float: right">
+                                {{ formsetafast.empty_form.DELETE }}
+                                <label>
+                                    Excluir
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#add-item-afast").click(function (ev) {
+                ev.preventDefault();
+                let count = $('#afastfrm').children().length;
+                let tmplMarkup = $("#item-afastamentosfrm").html();
+                let compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
+                $("div#afastfrm").append(compiledTmpl);
+
+                // update form count
+                $('#id_sfp017_set-TOTAL_FORMS').attr('value', count + 1);
+
+                // some animate to scroll to view our new form
+                $('html, body').animate({
+                    scrollTop: $("#add-item-afast").position().top - 200
+                }, 800);
+            });
+        });
+    </script>
+{% endblock %}
+

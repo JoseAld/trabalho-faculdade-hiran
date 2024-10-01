@@ -1,0 +1,36 @@
+pipeline {
+  agent any
+  stages {
+    stage('Development') {
+      steps {
+
+              sh 'git checkout origin/development'
+
+              sh 'git checkout development || git checkout -b development'
+
+              sh 'git checkout origin/staging'
+
+              sh 'git checkout staging || git checkout -b staging'
+
+              sh 'git merge origin/development'
+
+              sh 'git push origin staging'
+
+              sh """
+                . ~/ambiente/env_recad_web/bin/activate
+                cp -f ~/ambiente/env_recad_web/.env ~/workspace/staging_recad_web/.env
+                python --version
+                python manage.py migrate
+              """
+
+      }
+    }
+    stage('Staging') {
+      steps {
+
+             sh 'ssh ubuntu@stagingrecad.layoutsistemas.com.br ./server/deploy.sh recad_web staging'
+
+        }
+    }
+  }
+}

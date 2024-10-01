@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="container-fluid">
+    <div class="scrollbar">
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        {% block breadcrumb %} {% endblock %}
+                    </div>
+                    <h4 class="page-title">{% block titulo_pagina %}{% endblock %}</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-xl-7">
+                                <h4 class="header-title">{% block form_tipo %}{% endblock %}</h4>
+                            </div>
+                            {% block solicitante %}{% endblock %}
+                        </div>
+                           {% block form %} {% endblock %}
+                    </div>
+                </div> <!-- end card-box -->
+            </div> <!-- end col -->
+        </div>
+    </div>
+</div> <!-- container -->
+{% endblock %}
+
+{% block script %}
+{{ block.super }}
+<script>
+    console.log('{{ form.errors }}')
+    {% if form.errors %}
+        let texto = "";
+        {% for error in form.non_field_errors %}
+            texto = texto.concat('{{ error }}', "</br>")
+        {% endfor %}
+        {% for error in form.field_errors %}
+            texto = texto.concat('{{ error }}', "</br>")
+        {% endfor %}
+        message('error', texto)
+    {% endif %}
+</script>
+{% endblock %}

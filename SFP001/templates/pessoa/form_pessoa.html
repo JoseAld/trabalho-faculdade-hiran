@@ -1,0 +1,2056 @@
+{% load static %}
+
+<style>.app-menu {
+  max-height: 1801px;
+  min-height: 1800px;
+</style>
+
+<form class="parsley-examples" id="form_usuario" method="POST" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-3">
+            <div style="display: none">
+                {{ form.foto_uri }}
+            </div>
+
+            <!-- Descomente esse trecho caso queira visualizar o erro no formulário -->
+<!--            {% for error in form.non_field_errors %}-->
+<!--                    {{ error }}-->
+<!--            {% endfor %}-->
+
+            <fieldset id="container-foto" class="fieldset-border-foto">
+                <legend class="legend-border-form">Foto</legend>
+                <div class="col-md-12">
+                    <div id="div-foto" class="col-md-12 d-flex justify-content-center">
+                        <img id="id_foto_webcam" class="img-fluid"
+                             src="data:image/jpeg;base64,{{ base64_string|safe }}"/>
+
+                        <i id="icon_foto" class="mdi mdi mdi-image-off" style="font-size: 10vw; display:{% if base64_string  %} none {% endif %}"></i>
+                    </div>
+                </div>
+
+
+                <div class="form-group" style="padding: 0; margin: 0;">
+                    <div class="button-list pe-xl-4 d-grid">
+                        <button id="select-image" type="button"
+                                class=" btn btn-lg btn-primary waves-effect waves-light">
+                            <div style="display: none">
+                                {{ form.foto }}
+                            </div>
+                            Selecionar
+                        </button>
+                        <button id="abrir-webcam" type="button"
+                                class="btn btn-lg btn-primary waves-effect waves-light"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modal-foto">Webcam
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+        <div class="col-md-9">
+            <fieldset class="fieldset-border-form">
+                <legend class="legend-border-form">Dados gerais</legend>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group mb-2">
+                            <label for="id_matricula" class="col-form-label  requiredField">
+                                Matricula
+                            </label>
+                            {{ form.matricula }}
+
+                            {% if form.matricula.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.matricula.errors.0 }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-group mb-2">
+                            <label for="id_matricfun" class="col-form-label  requiredField">
+                                Matr. Ant.
+                            </label>
+                            {{ form.matricfun }}
+                            <div class="invalid-feedback">
+                                {{ form.matricfun.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group mb-2">
+                            <label for="id_name" class="col-form-label  requiredField">
+                                Nome do Servidor
+                            </label>
+                            {{ form.nome }}
+                            <div class="invalid-feedback">
+                                {{ form.nome.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group mb-2">
+                            <label for="id_vinculo" class="col-form-label  requiredField">
+                                Vinculo
+                            </label>
+                            {{ form.sistema }}
+                            <div class="invalid-feedback">
+                                {{ form.sistema.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group mb-2">
+                            <label for="id_hortrab" class="col-form-label  requiredField">
+                                Carga horária
+                            </label>
+                            {{ form.hortrab }}
+                            <div class="invalid-feedback">
+                                {{ form.hortrab.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-2">
+                            <label for="id_funcao" class="col-form-label  requiredField">
+                                Cargo
+                            </label>
+                            {{ form.funcao }}
+                            <div class="invalid-feedback">
+                                {{ form.funcao.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group mb-2">
+                            <label for="id_funcao2" class="col-form-label  requiredField">
+                                Cargo 2
+                            </label>
+                            {{ form.funcao2 }}
+                            <div class="invalid-feedback">
+                                {{ form.funcao2.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-2">
+                            <label for="id_secretaria" class="col-form-label  requiredField">
+                                Secretaria
+                            </label>
+                            {{ form.cdsecreta }}
+                            <div class="invalid-feedback">
+                                {{ form.cdsecreta.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-2">
+                            <label for="id_setor" class="col-form-label  requiredField">
+                                Setor
+                            </label>
+                            {{ form.cdsetor }}
+                            <div class="invalid-feedback">
+                                {{ form.cdsetor.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-2">
+                            <label for="id_secorigem" class="col-form-label  requiredField">
+                                Secretaria origem
+                            </label>
+                            {{ form.cdsecretaorigem }}
+                            <div class="invalid-feedback">
+                                {{ form.cdsecretaorigem.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-2">
+                            <label for="id_setorigem" class="col-form-label  requiredField">
+                                Setor origem
+                            </label>
+                            {{ form.cdsetororigem }}
+                            <div class="invalid-feedback">
+                                {{ form.cdsetororigem.errors.0 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <fieldset class="fieldset-border-form">
+        <div class="col-md-12">
+            <nav style="position: relative;">
+                <div class="nav nav-tabs nav-bordered" id="nav-tab" role="tablist">
+                    <li class="nav-item">
+                        <a href="#nav-deficiencia-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            Deficiência
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-endereco-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            Endereço
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-dadoscompl-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            Dados Complementares
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-sitfunc-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            Situação Funcional
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-depend-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                            Dependentes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-qualifprof-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                           Qualificação Profissional
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-afast-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                           Afastamento
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-dadospes-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                           Dados Pessoais
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-estrang-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                           Estrangeiro
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-dadosescl-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                           Dados de Escolaridade
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-documet-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                           Documentação
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-outdocument-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                           Outras Documentações
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-dadosbanc-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                           Dados Bancários
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-contato-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                           Contato
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-info-tab" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                           Informativo
+                        </a>
+                    </li>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent" style="position: relative;">
+                <div class="tab-pane" id="nav-deficiencia-tab" role="tabpanel" aria-labelledby="nav-deficiencia-tab">
+                    <fieldset class="fieldset-border-form">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <div class="checkbox checkbox-success checkbox-circle">
+                                        <br>
+                                        {{ form.defic_fis }}
+                                        <label for="id_defic_fis" class="requiredField">
+                                            Deficiência Física
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_tipo_defic_fis" class="col-form-label  requiredField">
+                                        Tipo de deficiência física
+                                    </label>
+                                    {{ form.tipo_defic_fis }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <div class="checkbox checkbox-success checkbox-circle">
+                                        <br>
+                                        {{ form.defic_vis }}
+                                        <label for="id_defic_vis" class="requiredField">
+                                            Deficiência Visual
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_tipo_defic_vis" class="col-form-label  requiredField">
+                                        Tipo de Deficiência Visual
+                                    </label>
+                                    {{ form.tipo_defic_vis }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <div class="checkbox checkbox-success checkbox-circle">
+                                        <br>
+                                        {{ form.defic_ment }}
+                                        <label for="id_defic_mental" class="requiredField">
+                                            Deficiência Mental
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_tipo_defic_mental" class="col-form-label  requiredField">
+                                        Tipo de Deficiência Mental
+                                    </label>
+                                    {{ form.tipo_defic_ment }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <div class="checkbox checkbox-success checkbox-circle">
+                                        <br>
+                                        {{ form.defic_aud }}
+                                        <label for="id_dtlaudodeficiente" class="requiredField">
+                                            Deficiência Auditiva
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_dtlaudodeficiente" class="col-form-label  requiredField">
+                                        Data do laudo de moléstia grave
+                                    </label>
+                                    {{ form.dtlaudodeficiente }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <div class="checkbox checkbox-success checkbox-circle">
+                                        <br>
+                                        {{ form.defic_intlec }}
+                                        <label for="id_defic_intlec" class="requiredField">
+                                            Deficiência Intelectual
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <div class="checkbox checkbox-success checkbox-circle">
+                                        <br>
+                                        {{ form.cota_def_hab_reab }}
+                                        <label for="id_cota_def_hab_reab" class="requiredField">
+                                            Preenche cota def.habilit./reabilitado
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <div class="checkbox checkbox-success checkbox-circle">
+                                        <br>
+                                        {{ form.reabilitado }}
+                                        <label for="id_reabilitado" class="requiredField">
+                                            Reabilitado
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="nav-endereco-tab" role="tabpanel" aria-labelledby="nav-endereco-tab">
+                    <fieldset class="fieldset-border-form">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group mb-2">
+                                    <label for="id_tplogradouro" class="col-form-label  requiredField">
+                                        Tipo Logradouro
+                                    </label>
+                                    {{ form.tplogradouro }}
+                                    <div class="invalid-feedback">
+                                        {{ form.endereco.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group mb-2">
+                                    <label for="id_endereco" class="col-form-label  requiredField">
+                                        Endereço
+                                    </label>
+                                    {{ form.endereco }}
+                                    <div class="invalid-feedback">
+                                        {{ form.endereco.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group mb-2">
+                                    <label for="id_endnum" class="col-form-label  requiredField">
+                                        Número
+                                    </label>
+                                    {{ form.endnum }}
+                                    <div class="invalid-feedback">
+                                        {{ form.endnum.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group mb-2">
+                                    <label for="id_bairro" class="col-form-label  requiredField">
+                                        Bairro
+                                    </label>
+                                    {{ form.bairro }}
+                                    <div class="invalid-feedback">
+                                        {{ form.bairro.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_cidade" class="col-form-label  requiredField">
+                                        Cidade
+                                    </label>
+                                    {{ form.cidade }}
+                                    <div class="invalid-feedback">
+                                        {{ form.cidade.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group mb-2">
+                                    <label for="id_uf" class="col-form-label  requiredField">
+                                        UF
+                                    </label>
+                                    {{ form.uf }}
+                                    <div class="invalid-feedback">
+                                        {{ form.uf.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group mb-2">
+                                    <label for="id_cep" class="col-form-label  requiredField">
+                                            Cep
+                                    </label>
+                                    {{ form.cep }}
+                                    <div class="invalid-feedback">
+                                        {{ form.cep.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <fieldset class="fieldset-border-form">
+                            <legend class="legend-border-form">Cid. Nascimento</legend>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group mb-2">
+                                        <label for="id_ufnasc" class="col-form-label">
+                                            UF
+                                        </label>
+                                        {{ form.ufnasc }}
+                                        <div class="invalid-feedback">
+                                            {{ form.ufnasc.errors.0 }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-2">
+                                        <label for="id_cidnasc" class="col-form-label  requiredField">
+                                            Cidade
+                                        </label>
+                                        {{ form.cidnasc }}
+                                        <div class="invalid-feedback">
+                                            {{ form.cidnasc.errors.0 }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="nav-dadoscompl-tab" role="tabpanel" aria-labelledby="nav-dadoscompl-tab">
+                    <fieldset class="fieldset-border-form">
+                        <legend class="legend-border-form">Concurso</legend>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_classific" class="col-form-label  requiredField">
+                                        Classif.
+                                    </label>
+                                    {{ form.classific }}
+                                    <div class="invalid-feedback">
+                                        {{ form.classific.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_dtconcurso" class="col-form-label  requiredField">
+                                        Data 1ºconc.
+                                    </label>
+                                    {{ form.dtconcurso }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dtconcurso.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_classific2" class="col-form-label  requiredField">
+                                        Classif.
+                                    </label>
+                                    {{ form.classific2 }}
+                                    <div class="invalid-feedback">
+                                        {{ form.classific2.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_dtconcurs2" class="col-form-label  requiredField">
+                                        Data 2ºconc.
+                                    </label>
+                                    {{ form.dtconcurs2 }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dtconcurs2.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_contrato" class="col-form-label  requiredField">
+                                        Contrato
+                                    </label>
+                                    {{ form.contrato }}
+                                    <div class="invalid-feedback">
+                                        {{ form.contrato.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_dtopcao" class="col-form-label  requiredField">
+                                        Data opção
+                                    </label>
+                                    {{ form.dtopcao }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dtopcao.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_dtposse" class="col-form-label  requiredField">
+                                        Data posse
+                                    </label>
+                                    {{ form.dtposse }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dtposse.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="nav-sitfunc-tab" role="tabpanel" aria-labelledby="nav-sitfunc-tab">
+                    <fieldset class="fieldset-border-form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-4">
+                                    <div class="checkbox checkbox-success checkbox-circle mb-2">
+                                        {{ form.efetivo_fuc_gratif }}
+                                        <label for="id_efetivo_fuc_gratif">
+                                            Efetivo com função gratificada
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-4">
+                                    <div class="checkbox checkbox-success checkbox-circle mb-2">
+                                        {{ form.efetivo_sec_municp }}
+                                        <label for="id_efetivo_sec_municp">
+                                            Efetivo cedido a outra secretaria do municipio
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-4">
+                                    <div class="checkbox checkbox-success checkbox-circle mb-2">
+                                        {{ form.efetivo_org_inst }}
+                                        <label for="id_efetivo_org_inst">
+                                            Efetivo cedido a outro órgão ou instituição
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <div class="checkbox checkbox-success checkbox-circle mb-2">
+                                        <br>
+                                        {{ form.efetivo_lic_venc }}
+                                        <label for="id_efetivo_lic_venc">
+                                            Efetivo com licença sem vencimento
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 m-0 p-0">
+                                <div class="col-md-8">
+                                    <div class="form-group mb-2">
+                                        <label for="id_inicio" class="col-form-label  requiredField">
+                                            Inicio
+                                        </label>
+                                        {{ form.dt_efetivo_vencimento }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 m-0 p-0">
+                                <div class="col-md-8">
+                                    <div class="form-group mb-2">
+                                        <label for="id_inicio" class="col-form-label  requiredField">
+                                            Termino
+                                        </label>
+                                        {{ form.dt_efetivo_venci_fim }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <div class="checkbox checkbox-success checkbox-circle mb-2">
+                                        <br>
+                                        {{ form.nomeados_estg_prob }}
+                                        <label for="id_nomeados_estg_prob">
+                                            Nomeados em estágio probatório
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 m-0 p-0">
+                                <div class="col-md-8">
+                                    <div class="form-group mb-2">
+                                        <label for="id_inicio" class="col-form-label  requiredField">
+                                            Inicio
+                                        </label>
+                                        {{ form.dt_nomeados_probatorio }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 m-0 p-0">
+                                <div class="col-md-8">
+                                    <div class="form-group mb-2">
+                                        <label for="id_inicio" class="col-form-label  requiredField">
+                                            Termino
+                                        </label>
+                                        {{ form.dt_nomeados_prob_fim }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="nav-depend-tab" role="tabpanel" aria-labelledby="nav-depend-tab">
+                    <fieldset class="fieldset-border-form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="depenfrm">
+                                    {{ formsetdepen.management_form }}
+                                    {% for formdep in formsetdepen.forms %}
+                                        {{ formdep.id }}
+                                        <div id="item-{{ forloop.counter0 }}">
+                                            <fieldset class="fieldset-border-form">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nomedep"
+                                                                   class="col-form-label  requiredField">
+                                                                Nome do Dependente
+                                                            </label>
+                                                            {{ formdep.nomedep }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="cpf_dependente"
+                                                                   class="col-form-label  requiredField">
+                                                                CPF
+                                                            </label>
+                                                            {{ formdep.cpf_dependente }}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_identdepend"
+                                                                   class="col-form-label  requiredField">
+                                                                RG
+                                                            </label>
+                                                            {{ formdep.identdepend }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_sexo"
+                                                                   class="col-form-label  requiredField">
+                                                                Sexo
+                                                            </label>
+                                                            {{ formdep.sexo }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nascdep"
+                                                                   class="col-form-label  requiredField">
+                                                                Data de Nascimento
+                                                            </label>
+                                                            {{ formdep.nascdep }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_dparent"
+                                                                   class="col-form-label  requiredField">
+                                                                Parentesco
+                                                            </label>
+                                                            {{ formdep.parent }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="cpf_dependente"
+                                                                   class="col-form-label  requiredField">
+                                                                Núm. SUS
+                                                            </label>
+                                                            {{ formdep.sus_numcartdep }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="cpf_dependente"
+                                                                   class="col-form-label  requiredField">
+                                                                Data de emissão
+                                                            </label>
+                                                            {{ formdep.sus_dtemissaodep }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mt-2">
+                                                            <div class="checkbox-circle">
+                                                                {{ formdep.depir }}
+                                                                <label for="id_depir">
+                                                                    Dependente para Imposto de Renda
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mt-2">
+
+                                                            {{ formdep.depsf }}
+                                                            <label for="id_depsf">
+                                                                Dependente para Salário Familía
+                                                            </label>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group mt-2">
+
+                                                            {{ formdep.incap_fisica }}
+                                                            <label for="id_incap_fisica">
+                                                                Tem incapacidade física ou mental para o trabalho
+                                                            </label>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group mt-2">
+                                                            <div class="">
+                                                                {{ formdep.DELETE }}
+                                                                <label>
+                                                                    Excluir
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="button" class="btn btn-blue waves-effect waves-light text-white" id="add-item-depen"
+                            title="Novo dependente" style="float: right">
+                        <span class="btn-label"><i class=" mdi mdi-18px mdi-account-child"></i></span>Adicionar
+                    </button>
+                </div>
+                <div class="tab-pane" id="nav-qualifprof-tab" role="tabpanel" aria-labelledby="nav-qualifprof-tab">
+                    <fieldset class="fieldset-border-form">
+                        <legend class="legend-border-form">Dados Gerais</legend>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="cursofrm">
+                                    {{ formset.management_form }}
+                                    {% for formqual in formset %}
+                                        <div id="item-{{ forloop.counter0 }}">
+                                            <fieldset class="fieldset-border-form">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nivel"
+                                                                   class="col-form-label  requiredField">
+                                                                Nivel
+                                                            </label>
+                                                            {{ formqual.nivel }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nomecurso"
+                                                                   class="col-form-label  requiredField">
+                                                                Nome do Curso
+                                                            </label>
+                                                            {{ formqual.nomecurso }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nivel"
+                                                                   class="col-form-label  requiredField">
+                                                                Instituição
+                                                            </label>
+                                                            {{ formqual.instituicao }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="_id_carghora"
+                                                                   class="col-form-label  requiredField">
+                                                                Carga horária
+                                                            </label>
+                                                            {{ formqual.carghora }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="_id_anobase"
+                                                                   class="col-form-label  requiredField">
+                                                                Ano Base
+                                                            </label>
+                                                            {{ formqual.anobase }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="_id_dtiniciocurso"
+                                                                   class="col-form-label  requiredField">
+                                                                Data de inicio
+                                                            </label>
+                                                            {{ formqual.dtiniciocurso }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="_id_dtfimcurso"
+                                                                   class="col-form-label  requiredField">
+                                                                Data de conclusão
+                                                            </label>
+                                                            {{ formqual.dtfimcurso }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mt-2">
+                                                            <div style="float: right">
+                                                                {{ formqual.DELETE }}
+                                                                <label>
+                                                                    Excluir
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="button" class="btn btn-blue waves-effect waves-light text-white" id="add-item"
+                            title="Novo curso" style="float: right">
+                        <span class="btn-label"><i class=" mdi mdi-18px mdi-account-details"></i></span>Adicionar
+                    </button>
+                </div>
+                <div class="tab-pane" id="nav-afast-tab" role="tabpanel" aria-labelledby="nav-afast-tab">
+                    <fieldset class="fieldset-border-form">
+                        <legend class="legend-border-form">Dados Gerais</legend>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="afastfrm">
+                                    {{ formsetafast.management_form }}
+                                    {% for formaf in formsetafast %}
+                                        <div id="item-{{ forloop.counter0 }}">
+                                            <fieldset class="fieldset-border-form">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nivel"
+                                                                   class="col-form-label  requiredField">
+                                                                Ano Base
+                                                            </label>
+                                                            {{ formaf.anobase }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nomecurso"
+                                                                   class="col-form-label  requiredField">
+                                                                Tipo de Afastamento
+                                                            </label>
+                                                            {{ formaf.codfol }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nomecurso"
+                                                                   class="col-form-label  requiredField">
+                                                                Inicio
+                                                            </label>
+                                                            {{ formaf.dtinicioafst }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nomecurso"
+                                                                   class="col-form-label  requiredField">
+                                                                Fim
+                                                            </label>
+                                                            {{ formaf.dtfimafst }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-2">
+                                                            <label for="id_nivel"
+                                                                   class="col-form-label  requiredField">
+                                                                Observação
+                                                            </label>
+                                                            {{ formaf.obsafst }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mt-2">
+                                                            <div style="float: right">
+                                                                {{ formaf.DELETE }}
+                                                                <label>
+                                                                    Excluir
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="button" class="btn btn-blue waves-effect waves-light text-white" id="add-item-afast"
+                            title="Novo afastamento" style="float: right">
+                        <span class="btn-label"><i class="mdi mdi-18px mdi-file-document"></i></span> Adicionar
+                    </button>
+                </div>
+                <div class="tab-pane show active" id="nav-dadospes-tab" role="tabpanel"
+                     aria-labelledby="nav-dadospes-tab">
+                    <fieldset class="fieldset-border-form">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_cpf" class="col-form-label  requiredField">
+                                        CPF
+                                    </label>
+                                    {{ form.cpf }}
+                                    <div class="invalid-feedback">
+                                        {{ form.cpf.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_reservista" class="col-form-label  requiredField">
+                                        Reservista
+                                    </label>
+                                    {{ form.certmilit }}
+                                    <div class="invalid-feedback">
+                                        {{ form.certmilit.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_conssig" class="col-form-label  requiredField">
+                                        Conselho(SIGLA)
+                                    </label>
+                                    {{ form.regcons }}
+                                    <div class="invalid-feedback">
+                                        {{ form.regcons.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_numcons" class="col-form-label  requiredField">
+                                        Núm. do conselho
+                                    </label>
+                                    {{ form.numcons }}
+                                    <div class="invalid-feedback">
+                                        {{ form.numcons.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_nomepai" class="col-form-label  requiredField">
+                                        Nome do Pai
+                                    </label>
+                                    {{ form.nomepai }}
+                                    <div class="invalid-feedback">
+                                        {{ form.nomepai.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_nomemae" class="col-form-label  requiredField">
+                                        Nome da Mãe
+                                    </label>
+                                    {{ form.nomemae }}
+                                    <div class="invalid-feedback">
+                                        {{ form.nomemae.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_naturaliza" class="col-form-label  requiredField">
+                                        Naturalidade
+                                    </label>
+                                    {{ form.naturaliza }}
+                                    <div class="invalid-feedback">
+                                        {{ form.naturaliza.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_nacionalid" class="col-form-label  requiredField">
+                                        Nacionalidade
+                                    </label>
+                                    {{ form.nacionalid }}
+                                    <div class="invalid-feedback">
+                                        {{ form.nacionalid.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_tpsanguineo" class="col-form-label  requiredField">
+                                        Tipo Sanguíneo
+                                    </label>
+                                    {{ form.tpsanguineo }}
+                                    <div class="invalid-feedback">
+                                        {{ form.tpsanguineo.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_raca-cor" class="col-form-label  requiredField">
+                                        Raça/Cor
+                                    </label>
+                                    {{ form.raca }}
+                                    <div class="invalid-feedback">
+                                        {{ form.raca.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_estcivil" class="col-form-label  requiredField">
+                                        Estado civil
+                                    </label>
+                                    {{ form.estcivil }}
+                                    <div class="invalid-feedback">
+                                        {{ form.estcivil.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_sexo" class="col-form-label  requiredField">
+                                        Sexo
+                                    </label>
+                                    {{ form.sexo }}
+                                    <div class="invalid-feedback">
+                                        {{ form.sexo.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_dtnasc" class="col-form-label  requiredField">
+                                        Data de Nascimento
+                                    </label>
+                                    {{ form.dtnasc }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dtnasc.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_dtadmissao" class="col-form-label  requiredField">
+                                        Data de Admissão
+                                    </label>
+                                    {{ form.dtadmissao }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dtadmissao.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_" class="col-form-label  requiredField">
+                                        Data de Admissão 2
+                                    </label>
+                                    {{ form.dtadmissao2 }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dtadmissao2.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    <label for="id_obs" class="col-form-label  requiredField">
+                                        Observações
+                                    </label>
+                                    {{ form.obs }}
+                                    <div class="invalid-feedback">
+                                        {{ form.obs.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="nav-estrang-tab" role="tabpanel" aria-labelledby="nav-estrang-tab">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <fieldset class="fieldset-border-form">
+                                <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">Estrangeiro</legend>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-2">
+                                             <label for="id_estrangeiro" class="col-form-label  requiredField">
+                                                É Estrangeiro?
+                                            </label>
+                                            {{ form.estrangeiro }}
+                                            <div class="invalid-feedback">
+                                                {{ form.estrangeiro.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-10">
+                            <fieldset class="fieldset-border-form">
+                                <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">Passaporte</legend>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label for="id_paisorigem" class="col-form-label  requiredField">
+                                                País de Origem
+                                            </label>
+                                            {{ form.paisorigem }}
+                                            <div class="invalid-feedback">
+                                                {{ form.paisorigem.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label for="id_cartbrasil" class="col-form-label  requiredField">
+                                                Nº de Passaporte
+                                            </label>
+                                            {{ form.cartbrasil }}
+                                            <div class="invalid-feedback">
+                                                {{ form.cartbrasil.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label for="id_dtbrasil" class="col-form-label  requiredField">
+                                                Data Passaporte
+                                            </label>
+                                            {{ form.dtbrasil }}
+                                            <div class="invalid-feedback">
+                                                {{ form.dtbrasil.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-12">
+                            <fieldset class="fieldset-border-form">
+                                <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">Outros Dados</legend>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group mb-2">
+                                            <label for="id_casadocombr" class="col-form-label  requiredField">
+                                                Casado Com Brasileiro
+                                            </label>
+                                            {{ form.casadocombr }}
+                                            <div class="invalid-feedback">
+                                                {{ form.casadocombr.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-2">
+                                        <div class="form-group mb-2">
+                                            <label for="id_filhocombr" class="col-form-label  requiredField">
+                                                Filho com Brasileiro
+                                            </label>
+                                            {{ form.filhocombr }}
+                                            <div class="invalid-feedback">
+                                                {{ form.filhocombr.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label for="id_estado_estrangeiro" class="col-form-label  requiredField">
+                                                Estado/Província
+                                            </label>
+                                            {{ form.estado_estrangeiro }}
+                                            <div class="invalid-feedback">
+                                                {{ form.estado_estrangeiro.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label for="id_cidade_estrangeiro" class="col-form-label  requiredField">
+                                                Cidade
+                                            </label>
+                                            {{ form.cidade_estrangeiro }}
+                                            <div class="invalid-feedback">
+                                                {{ form.cidade_estrangeiro.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                            <fieldset class="fieldset-border-form">
+                                <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">Registro de Estrangeiro</legend>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_rnenum" class="col-form-label  requiredField">
+                                                Registro Nacional de Estrangeiro
+                                            </label>
+                                            {{ form.rnenum }}
+                                            <div class="invalid-feedback">
+                                                {{ form.rnenum.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_rneorgao" class="col-form-label  requiredField">
+                                                Orgão Emissor
+                                            </label>
+                                            {{ form.rneorgao }}
+                                            <div class="invalid-feedback">
+                                                {{ form.rneorgao.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_rnedataemi" class="col-form-label  requiredField">
+                                                Data de Expedição
+                                            </label>
+                                            {{ form.rnedataemi }}
+                                            <div class="invalid-feedback">
+                                                {{ form.rnedataemi.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_dtchegadaestran" class="col-form-label  requiredField">
+                                                Data de Chegada ao País
+                                            </label>
+                                            {{ form.dtchegadaestran }}
+                                            <div class="invalid-feedback">
+                                                {{ form.dtchegadaestran.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                         <div class="form-group mb-2">
+                                            <label for="id_tmpresidestrang" class="col-form-label  requiredField">
+                                                Tempo de Residencia
+                                            </label>
+                                            {{ form.tmpresidestrang }}
+                                            <div class="invalid-feedback">
+                                                {{ form.tmpresidestrang.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                         <div class="form-group mb-2">
+                                            <label for="id_condingestrang" class="col-form-label  requiredField">
+                                                Condição do Estrangeiro
+                                            </label>
+                                            {{ form.condingestrang }}
+                                            <div class="invalid-feedback">
+                                                {{ form.condingestrang.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                </div>
+                <div class="tab-pane" id="nav-dadosescl-tab" role="tabpanel" aria-labelledby="nav-dadosescl-tab">
+                    <fieldset class="fieldset-border-form">
+                        <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">Grau de instrução</legend>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    {{ form.grinstr }}
+                                    <div class="invalid-feedback">
+                                        {{ form.grinstr.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="nav-documet-tab" role="tabpanel" aria-labelledby="nav-documet-tab">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <fieldset class="fieldset-border-form">
+                                <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">
+                                    RG
+                                </legend>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group mb-2">
+                                            <label for="id_identidade" class="col-form-label  requiredField">
+                                                Número
+                                            </label>
+                                            {{ form.identidade }}
+                                            <div class="invalid-feedback">
+                                                {{ form.identidade.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group mb-2">
+                                            <label for="id_orgaoident" class="col-form-label  requiredField">
+                                                Orgão de Exp.
+                                            </label>
+                                            {{ form.orgaoident }}
+                                            <div class="invalid-feedback">
+                                                {{ form.orgaoident.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group mb-2">
+                                            <label for="id_ufident" class="col-form-label  requiredField">
+                                                UF
+                                            </label>
+                                            {{ form.ufident }}
+                                            <div class="invalid-feedback">
+                                                {{ form.ufident.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_dtident" class="col-form-label  requiredField">
+                                                Data
+                                            </label>
+                                            {{ form.dtident }}
+                                            <div class="invalid-feedback">
+                                                {{ form.dtident.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-5">
+                            <fieldset class="fieldset-border-form">
+                                <legend class="legend-border-form" style="padding: 0px 5px 0px 5px"> Título de
+                                    Eleitor
+                                </legend>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group mb-2">
+                                            <label for="id_titeleitor" class="col-form-label  requiredField">
+                                                Número
+                                            </label>
+                                            {{ form.titeleitor }}
+                                            <div class="invalid-feedback">
+                                                {{ form.titeleitor.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_zona" class="col-form-label  requiredField">
+                                                Zona
+                                            </label>
+                                            {{ form.zona }}
+                                            <div class="invalid-feedback">
+                                                {{ form.zona.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group mb-2">
+                                            <label for="id_secao" class="col-form-label  requiredField">
+                                                Seção
+                                            </label>
+                                            {{ form.secao }}
+                                            <div class="invalid-feedback">
+                                                {{ form.secao.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <fieldset class="fieldset-border-form">
+                                <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">CNH - Carteira
+                                    Nacional de Habilitação
+                                </legend>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-1">
+                                            <label for="id_cnh" class="col-form-label  requiredField">
+                                                Número
+                                            </label>
+                                            {{ form.cnh }}
+                                            <div class="invalid-feedback">
+                                                {{ form.cnh.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-1">
+                                            <label for="id_cnhcat" class="col-form-label  requiredField">
+                                                Categoria
+                                            </label>
+                                            {{ form.cnhcat }}
+                                            <div class="invalid-feedback">
+                                                {{ form.cnhcat.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-1">
+                                            <label for="id_cnhcat" class="col-form-label  requiredField">
+                                                Órgão Emissor
+                                            </label>
+                                            {{ form.cnhorgao }}
+                                            <div class="invalid-feedback">
+                                                {{ form.cnhorgao.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-1">
+                                            <label for="id_dtcnhexp" class="col-form-label  requiredField">
+                                                Data de expedição
+                                            </label>
+                                            {{ form.cnhdtexp }}
+                                            <div class="invalid-feedback">
+                                                {{ form.cnhdtexp.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_dtcnh" class="col-form-label  requiredField">
+                                                Data de validade
+                                            </label>
+                                            {{ form.dtcnh }}
+                                            <div class="invalid-feedback">
+                                                {{ form.dtcnh.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_dtprimcnh" class="col-form-label  requiredField">
+                                                Data da primeira habilitação
+                                            </label>
+                                            {{ form.dtprimcnh }}
+                                            <div class="invalid-feedback">
+                                                {{ form.dtprimcnh.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group mb-2">
+                                            <label for="id_ufcnh" class="col-form-label  requiredField">
+                                                UF
+                                            </label>
+                                            {{ form.ufcnh }}
+                                            <div class="invalid-feedback">
+                                                {{ form.ufcnh.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <fieldset class="fieldset-border-form">
+                                <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">CTPS - Carteira
+                                    de Trabalho e Previdência Social
+                                </legend>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-grloup mb-2">
+                                            <label for="id_numcartprof" class="col-form-label  requiredField">
+                                                Número
+                                            </label>
+                                            {{ form.numcartprof }}
+                                            <div class="invalid-feedback">
+                                                {{ form.numcartprof.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_seriecartprof" class="col-form-label  requiredField">
+                                                Série
+                                            </label>
+                                            {{ form.seriecartprof }}
+                                            <div class="invalid-feedback">
+                                                {{ form.seriecartprof.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group mb-2">
+                                            <label for="id_ufcartprof" class="col-form-label  requiredField">
+                                                UF
+                                            </label>
+                                            {{ form.ufcartprof }}
+                                            <div class="invalid-feedback">
+                                                {{ form.ufcartprof.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-6">
+                            <fieldset class="fieldset-border-form">
+                                <legend class="legend-border-form" style="padding: 0px 5px 0px 5px">PIS/PASEP
+                                </legend>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-2">
+                                            <label for="id_pispasep" class="col-form-label  requiredField">
+                                                Número
+                                            </label>
+                                            {{ form.pispasep }}
+                                            <div class="invalid-feedback">
+                                                {{ form.pispasep.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-2">
+                                            <label for="id_dtpispasep" class="col-form-label  requiredField">
+                                                Data
+                                            </label>
+                                            {{ form.dtpispasep }}
+                                            <div class="invalid-feedback">
+                                                {{ form.dtpispasep.errors.0 }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="nav-outdocument-tab" role="tabpanel" aria-labelledby="nav-outdocument-tab">
+                    <fieldset class="fieldset-border-form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_ncertcasamento" class="col-form-label  requiredField">
+                                        Número da certidão de casamento
+                                    </label>
+                                    {{ form.ncertcasamento }}
+                                    <div class="invalid-feedback">
+                                        {{ form.ncertcasamento.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_ncertnascimento" class="col-form-label  requiredField">
+                                        Número da certidão de nascimento
+                                    </label>
+                                    {{ form.ncertnascimento }}
+                                    <div class="invalid-feedback">
+                                        {{ form.ncertnascimento.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_naverbdivorcio" class="col-form-label  requiredField">
+                                        Número da averbação de divórcio
+                                    </label>
+                                    {{ form.naverbdivorcio }}
+                                    <div class="invalid-feedback">
+                                        {{ form.naverbdivorcio.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_naverbdivorcio" class="col-form-label  requiredField">
+                                        Data do regimento de previdência
+                                    </label>
+                                    {{ form.dataregimeprev }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dataregimeprev.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_sus_numcart" class="col-form-label  requiredField">
+                                        Número do cartão SUS
+                                    </label>
+                                    {{ form.sus_numcart }}
+                                    <div class="invalid-feedback">
+                                        {{ form.sus_numcart.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_naverbdivorcio" class="col-form-label  requiredField">
+                                        Data de emissão do cartão SUS
+                                    </label>
+                                    {{ form.sus_dtemissao }}
+                                    <div class="invalid-feedback">
+                                        {{ form.sus_dtemissao.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="form-group mt-2">
+                                    <div class="checkbox checkbox-success checkbox-circle">
+                                        {{ form.jacotribregime }}
+                                        <label for="id_jacotribregime" style="font-size: 15px">
+                                            Já contribui para algum regimento de previdência antes do ingresso na
+                                            Prefeitura, se sim a partir de quanto?
+                                        </label>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        {{ form.jacotribregime.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="nav-dadosbanc-tab" role="tabpanel" aria-labelledby="nav-dadosbanc-tab">
+                    <fieldset class="fieldset-border-form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_banco" class="col-form-label  requiredField">
+                                        Banco
+                                    </label>
+                                    {{ form.banco }}
+                                    <div class="invalid-feedback">
+                                        {{ form.banco.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_banco" class="col-form-label  requiredField">
+                                        Agência
+                                    </label>
+                                    {{ form.agencia }}
+                                    <div class="invalid-feedback">
+                                        {{ form.agencia.errors.0 }}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_banco" class="col-form-label  requiredField">
+                                        Dig. Agência
+                                    </label>
+                                    {{ form.dvagencia }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dvagencia.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_tipoconta" class="col-form-label  requiredField">
+                                        Tipo Conta
+                                    </label>
+                                    {{ form.tipoconta }}
+                                    <div class="invalid-feedback">
+                                        {{ form.tipoconta.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_conta" class="col-form-label  requiredField">
+                                        Conta
+                                    </label>
+                                    {{ form.conta }}
+                                    <div class="invalid-feedback">
+                                        {{ form.conta.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_conta" class="col-form-label  requiredField">
+                                        Dig. Conta
+                                    </label>
+                                    {{ form.dvconta }}
+                                    <div class="invalid-feedback">
+                                        {{ form.dvconta.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="nav-contato-tab" role="tabpanel" aria-labelledby="nav-contato-tab">
+                    <fieldset class="fieldset-border-form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_fone" class="col-form-label  requiredField">
+                                        Telefone
+                                    </label>
+                                    {{ form.fone }}
+                                    <div class="invalid-feedback">
+                                        {{ form.fone.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_fone2" class="col-form-label  requiredField">
+                                        Telefone 2
+                                    </label>
+                                    {{ form.fone2 }}
+                                    <div class="invalid-feedback">
+                                        {{ form.fone2.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group mb-2">
+                                    <label for="id_fone2" class="col-form-label  requiredField">
+                                        Email
+                                    </label>
+                                    {{ form.email }}
+                                    <div class="invalid-feedback">
+                                        {{ form.email.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="tab-pane" id="nav-info-tab" role="tabpanel" aria-labelledby="nav-info-tab">
+                    <fieldset class="fieldset-border-form">
+                        <legend class="legend-border-form">Declaração de acumulo de cargo</legend>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    <label for="id_cargoacumulo" class="col-form-label  requiredField">
+                                        Cargo
+                                    </label>
+                                    {{ form.cargo_acumulo }}
+                                    <div class="invalid-feedback">
+                                        {{ form.cargo_acumulo.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    <label for="id_lotacaoacumulo" class="col-form-label  requiredField">
+                                        Lotação
+                                    </label>
+                                    {{ form.lotacao_acumulo }}
+                                    <div class="invalid-feedback">
+                                        {{ form.lotacao_acumulo.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_dtingracumulo" class="col-form-label  requiredField">
+                                        Data de ingresso
+                                    </label>
+                                    {{ form.data_ingresso_acumulo }}
+                                    <div class="invalid-feedback">
+                                        {{ form.data_ingresso_acumulo.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_jordacumulo" class="col-form-label  requiredField">
+                                        Jornada
+                                    </label>
+                                    {{ form.jornada_acumulo }}
+                                    <div class="invalid-feedback">
+                                        {{ form.jornada_acumulo.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group mb-2">
+                                    <label for="id_cargahracum" class="col-form-label  requiredField">
+                                        Carga horária
+                                    </label>
+                                    {{ form.carga_horaria_acumulo }}
+                                    <div class="invalid-feedback">
+                                        {{ form.carga_horaria_acumulo.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_esfera" class="col-form-label  requiredField">
+                                        Esfera
+                                    </label>
+                                    {{ form.esfera_acumulo }}
+                                    <div class="invalid-feedback">
+                                        {{ form.esfera_acumulo.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="id_regimejuracum" class="col-form-label  requiredField">
+                                        Regime Jurídico
+                                    </label>
+                                    {{ form.regime_juridico_acumulo }}
+                                    <div class="invalid-feedback">
+                                        {{ form.regime_juridico_acumulo.errors.0 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="row mt-2">
+        <div class="col-md-2 col-xl-2">
+            <div class="form-group mb-0 text-center">
+                <button type="submit" class="ladda-button btn btn-primary btn-block" id="btnpessoa"
+                        data-style="expand-right" name="salvar">Salvar
+                </button>
+            </div>
+        </div>
+        <div class="col-md-2 col-xl-2">
+            <a class="btn btn-danger btn-block" href="{% url 'SFP001:listagem_pessoa' %}">Cancelar</a>
+        </div>
+    </div>
+
+    <!-- Modal Foto -->
+    <div id="modal-foto" class="modal fade" tabindex="-1" role="dialog"
+         aria-labelledby="myLargeModalLabel" style="display: none; padding-right: 15px;" aria-modal="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myLargeModalLabel">Webcam</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="col-md-6 col-xl-6">
+                    <h4><sub id="video-mensagem-erro"></sub></h4>
+                </div>
+                <div class="modal-body" id="modalbody">
+
+                    <div class="col-md-12" style="margin-top: 10px;" id="video-teste-container">
+                        <div class="row">
+                            <div class="col-md-6 col-xl-6 video">
+                                <video id="video-teste" style="max-width: 100%"></video>
+                            </div>
+                            <div class="col-md-6 col-xl-6 image" id="conteudo-image" style="max-width: 100%;">
+                                <canvas id="canvas-teste" style="max-width: 100%; display: none;"
+                                        draggable="false"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary waves-effect waves-light" style="margin: 10px"
+                                id="button-camera">Abrir Câmera
+                        </button>
+                        <button type="button" class="btn btn-info waves-effect waves-light"
+                                id="button-camera-capturar"
+                                style="margin: 5px"><span class="btn-label"><i
+                                class="mdi mdi-camera-outline"></i></span>Capturar
+                        </button>
+                        <button type="button" class="btn btn-warning waves-effect waves-light"
+                                id="button-camera-limpar"
+                                style="margin: 5px"><span class="btn-label"><i
+                                class="mdi mdi-camera-outline"></i></span>Limpar
+                        </button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+</form>
+
+
+

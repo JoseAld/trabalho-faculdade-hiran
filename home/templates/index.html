@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% block title %}Layout|Recadastramento{% endblock %}
+
+{% block conteudo %}
+<h1>Estatísticas</h1>
+<div id="estatistica">
+    <div class="row">
+        <!-- Quantidade de Servidores -->
+        <div class="col-md-6 col-xl-3">
+            <a href="{% url 'SFP001:listagem_pessoa' %}?tipo=importado">
+                <div class="widget-rounded-circle card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="avatar-lg rounded-circle bg-soft-danger border-danger border">
+                                    <i class="mdi mdi-account-clock font-22 avatar-title text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-end">
+                                    <h3 class="text-dark mt-1"><span
+                                            data-plugin="counterup">{{ relatorios.importado }}</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">Servidores Pendentes</p>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div>
+                </div> <!-- end widget-rounded-circle-->
+            </a>
+        </div> <!-- end col-->
+
+        <!-- Total de Servidores Editados -->
+        <div class="col-md-6 col-xl-3">
+            <a href="{% url 'SFP001:listagem_pessoa' %}?tipo=editado">
+                <div class="widget-rounded-circle card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
+                                    <i class="mdi mdi-account-clock font-22 avatar-title text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-end">
+                                    <h3 class="text-dark mt-1"><span
+                                            data-plugin="counterup">{{ relatorios.editado }}</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">Servidores Editados</p>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div>
+                </div> <!-- end widget-rounded-circle-->
+            </a>
+        </div> <!-- end col-->
+
+       <!-- Total de Servidores Editados pelo funcionario-->
+        <div class="col-md-6 col-xl-3">
+            <a href="{% url 'SFP001:listagem_pessoa' %}?tipo=funcionario">
+                <div class="widget-rounded-circle card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="avatar-lg rounded-circle bg-soft-blue border-blue border">
+                                    <i class="mdi mdi-cellphone-information font-22 avatar-title text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-end">
+                                    <h3 class="text-dark mt-1"><span
+                                            data-plugin="counterup">{{ relatorios.funcionario }}</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">App Serv. Editados</p>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div>
+                </div> <!-- end widget-rounded-circle-->
+            </a>
+        </div> <!-- end col-->
+
+        <!-- Total de Servidores Finalizados -->
+        <div class="col-md-5 col-xl-3">
+            <a href="{% url 'SFP001:listagem_pessoa' %}?tipo=finalizado">
+                <div class="widget-rounded-circle card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="avatar-lg rounded-circle bg-soft-success border-success border">
+                                    <i class="mdi mdi-account-clock font-22 avatar-title text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-end">
+                                    <h3 class="text-dark mt-1"><span
+                                            data-plugin="counterup">{{ relatorios.finalizado }}</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">Servidores Finalizado</p>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div>
+                </div> <!-- end widget-rounded-circle-->
+            </a>
+        </div> <!-- end col-->
+
+    </div> <!-- end row 1 -->
+    <div class="row"> <!-- Charts -->
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title" id="titulo"></h4>
+                    <div class="mt-3 chartjs-chart">
+                        <canvas id="relatorio-recad" height="500vh"></canvas>
+                    </div>
+                </div>
+            </div> <!-- end card-->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+<!-- Include Charts Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+<!-- Script Charts -->
+<script>
+    var ctx = document.getElementById('relatorio-recad').getContext('2d');
+
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [''],
+            datasets: [
+                {
+                    label: "Quantidade de Registros Importados",
+                    data: {{ relatorios.qtde_importado }},
+                    backgroundColor: 'rgba(255,0,0)',
+                },
+                {
+                    label: "Quantidade de Registros Editados",
+                    data: {{ relatorios.qtde_editado }},
+                    backgroundColor: 'rgba(255,204,0)',
+                },
+                {
+                    label: "Qtd. Editados pelo Funcionário",
+                    data: {{ relatorios.qtde_funcionario }},
+                    backgroundColor: 'rgba(0, 0, 255)',
+                },
+                {
+                    label: "Quantidade de Registros Finalizados",
+                    data: {{ relatorios.qtde_finalizado }},
+                    backgroundColor: 'rgba(0, 190, 158)',
+                },
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "Relatório de Recadastramentos",
+            },
+            labels: {
+                fontStyle: "bold"
+            },
+            scales: {
+                xAxes: [{
+                    barThickness: 30
+                }]
+
+            },
+        }
+    });
+</script>
+
+{% endblock %}
